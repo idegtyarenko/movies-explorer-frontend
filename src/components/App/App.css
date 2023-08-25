@@ -1,5 +1,6 @@
 @import url('../../vendor/normalize.css');
 @import url('../../fonts/fonts.css');
+@import url('./tokens.css');
 
 .app {
   font-family: "Inter", "Helvetica", "Arial", sans-serif;
@@ -8,4 +9,9 @@
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
+
+  display: flex;
+  min-height: 100svh;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-primary);
 }

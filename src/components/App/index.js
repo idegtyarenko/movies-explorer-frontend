@@ -1,11 +1,11 @@
+import Header from '../Header';
+
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className='app'>
-      <h1>Hello world</h1>
+      <Header />
     </div>
   );
 }
-
-export default App;
