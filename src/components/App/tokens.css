@@ -1,6 +1,16 @@
 .app {
+  --max-width-page: 1140px;
+  --min-width-page: 320px;
+  --margin-page-side: 30px;
+  --margin-page-side-mobile: 10px;
+
   --color-background-primary: #202020;
   --color-background-secondary: #272727;
 
   --color-text-primary: white;
+  --color-text-secondary: #8B8B8B;
+  --color-borders: #424242;
+
+  --opacity-link-hover: .7;
+  --duration-hover-animation: .2s;
 }
