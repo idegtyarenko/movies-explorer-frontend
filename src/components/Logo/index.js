@@ -1,11 +1,11 @@
-// TODOS:
-// Optimize SVG
-// link to main page
+import { Link } from 'react-router-dom';
 
 import logo from '../../images/logo.svg';
 
 export default function Logo() {
   return (
-    <img src={logo} alt='Логотип «Смотрим»' className='logo'></img>
+    <Link to="/">
+      <img src={logo} alt='Логотип «Смотрим»' className='logo'></img>
+    </Link>
   );
 }
