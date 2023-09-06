@@ -3,6 +3,8 @@
   --min-width-page: 320px;
   --margin-page-side: 30px;
   --margin-page-side-mobile: 10px;
+  --width-section: calc(100% - 2 * var(--margin-page-side));
+  --width-section-mobile: calc(100% - 2 * var(--margin-page-side-mobile));
 
   --color-background-primary: #202020;
   --color-background-secondary: #272727;

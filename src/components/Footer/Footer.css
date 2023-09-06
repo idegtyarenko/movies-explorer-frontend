@@ -5,7 +5,7 @@
     "acknowledgement acknowledgement"
     "separator separator"
     "copyright nav";
-  width: calc(100% - 2 * var(--margin-page-side));
+  width: var(--width-section);
   max-width: var(--max-width-page);
   margin: 79px auto 20px;
   font-size: 13px;
@@ -64,7 +64,7 @@
     "nav"
     "copyright";
     text-align: center;
-    width: calc(100% - 2 * var(--margin-page-side-mobile));
+    width: var(--width-section-mobile);
     font-size: 12px;
     line-height: 15px;
   }
