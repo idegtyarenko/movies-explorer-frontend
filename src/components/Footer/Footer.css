@@ -55,7 +55,6 @@
   opacity: var(--opacity-link-hover);
 }
 
-/* TODO: use variable */
 @media screen and (max-width: 428px) {
   .footer {
     grid-template-columns: 1fr;

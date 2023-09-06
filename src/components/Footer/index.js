@@ -1,7 +1,7 @@
 import NavItem from './NavItem';
 import './Footer.css';
 
-const currentYear = '2023';  // TODO Показывать текущий год
+const currentYear = new Date().getFullYear();
 const acknowledgement = 'Учебный проект Яндекс.Практикум х BeatFilm.';
 const navLinks = {
   'Яндекс.Практикум': 'https://practicum.yandex.ru',
