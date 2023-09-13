@@ -1,0 +1,19 @@
+.header {
+  --logo-width: 38px;
+  --burger-width: 44px;
+  --nav-column-width: calc(var(--width-section) - var(--logo-width));
+  --nav-column-max-width: calc(var(--max-width-page) - var(--logo-width));
+
+  display: grid;
+  grid-template-columns:
+    1fr
+    fit-content(0)
+    minmax(min-content, min(var(--nav-column-width), var(--nav-column-max-width)))
+    44px
+    1fr;
+  background-color: var(--color-background-promo);
+  justify-content: space-between;
+  align-items: center;
+}
+
+
