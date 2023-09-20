@@ -1,3 +1,5 @@
+import Section from "../Section";
+
 import "./AboutProject.css";
 
 function Factoid({ name, description }) {
@@ -11,7 +13,7 @@ function Factoid({ name, description }) {
 
 export default function AboutProject() {
   return (
-    <section className="about-project">
+    <Section classes={["about-project"]}>
       <h2 className="about-project__title">О проекте</h2>
       <div className="about-project__factoids">
         <Factoid
@@ -23,6 +25,6 @@ export default function AboutProject() {
           description="У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься."
         />
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,3 +1,4 @@
+import Section from "../Section";
 import NavItem from "./NavItem";
 import "./Footer.css";
 
@@ -10,7 +11,7 @@ const navLinks = {
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <Section tagName="footer" classes={["footer"]}>
       <p className="footer__acknowledgment">{acknowledgement}</p>
       <hr className="footer__separator" />
       <p className="footer__copyright">© {currentYear}</p>
@@ -23,6 +24,6 @@ export default function Footer() {
           ))}
         </ul>
       </nav>
-    </footer>
+    </Section>
   );
 }
