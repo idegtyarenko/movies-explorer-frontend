@@ -11,9 +11,9 @@
   --color-background-promo: #073042;
 
   --color-text-primary: white;
-  --color-text-secondary: #8B8B8B;
+  --color-text-secondary: #8b8b8b;
   --color-borders: #424242;
 
-  --opacity-link-hover: .7;
-  --duration-hover-animation: .2s;
+  --opacity-link-hover: 0.7;
+  --duration-hover-animation: 0.2s;
 }

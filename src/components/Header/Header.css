@@ -8,12 +8,13 @@
   grid-template-columns:
     1fr
     fit-content(0)
-    minmax(min-content, min(var(--nav-column-width), var(--nav-column-max-width)))
+    minmax(
+      min-content,
+      min(var(--nav-column-width), var(--nav-column-max-width))
+    )
     44px
     1fr;
   background-color: var(--color-background-promo);
   justify-content: space-between;
   align-items: center;
 }
-
-

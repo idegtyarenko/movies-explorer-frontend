@@ -59,10 +59,10 @@
   .footer {
     grid-template-columns: 1fr;
     grid-template-areas:
-    "acknowledgement"
-    "separator"
-    "nav"
-    "copyright";
+      "acknowledgement"
+      "separator"
+      "nav"
+      "copyright";
     text-align: center;
     width: var(--width-section-mobile);
     font-size: 12px;

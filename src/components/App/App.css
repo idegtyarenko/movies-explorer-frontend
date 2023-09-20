@@ -1,6 +1,6 @@
-@import url('../../vendor/normalize.css');
-@import url('../../fonts/fonts.css');
-@import url('./tokens.css');
+@import url("../../vendor/normalize.css");
+@import url("../../fonts/fonts.css");
+@import url("./tokens.css");
 
 .app {
   font-family: "Inter", "Helvetica", "Arial", sans-serif;

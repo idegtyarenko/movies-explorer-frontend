@@ -1,6 +1,6 @@
-import './AboutProject.css';
+import "./AboutProject.css";
 
-function Factoid ({ name, description }) {
+function Factoid({ name, description }) {
   return (
     <div className="about-project__factoid">
       <p className="about-project__factoid-name">{name}</p>
@@ -9,7 +9,7 @@ function Factoid ({ name, description }) {
   );
 }
 
-export default function AboutProject () {
+export default function AboutProject() {
   return (
     <section className="about-project">
       <h2 className="about-project__title">О проекте</h2>
@@ -23,7 +23,6 @@ export default function AboutProject () {
           description="У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься."
         />
       </div>
-
     </section>
   );
 }

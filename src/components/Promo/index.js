@@ -1,6 +1,6 @@
-import illustration from '../../images/globe.svg';
+import illustration from "../../images/globe.svg";
 
-import './Promo.css';
+import "./Promo.css";
 
 export default function Promo() {
   return (
@@ -12,7 +12,9 @@ export default function Promo() {
         <p className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <a className="promo__button" href="#about">Узнать больше</a>
+        <a className="promo__button" href="#about">
+          Узнать больше
+        </a>
       </div>
       <img
         alt="Иллюстрация: глобус, состоящий из надписей WEB"
@@ -20,5 +22,5 @@ export default function Promo() {
         src={illustration}
       />
     </section>
-  )
+  );
 }

@@ -1,2 +1,3 @@
 # movies-explorer-frontend
-Final student project for Yandex Praktikum. Frontend 
+
+Final student project for Yandex Praktikum. Frontend

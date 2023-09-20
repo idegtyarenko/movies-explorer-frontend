@@ -1,11 +1,5 @@
-import './Menu.css';
+import "./Menu.css";
 
 export default function Menu() {
-  return (
-    <button
-      className="menu"
-      type="button"
-      aria-label="Меню"
-    />
-  );
+  return <button className="menu" type="button" aria-label="Меню" />;
 }
