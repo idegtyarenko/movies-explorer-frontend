@@ -1,10 +1,11 @@
+import SectionWithBackground from "../SectionWithBackground";
 import illustration from "../../images/globe.svg";
 
 import "./Promo.css";
 
 export default function Promo() {
   return (
-    <section className="promo" aria-label="Заглавие сайта">
+    <SectionWithBackground classes={["promo"]} aria-label="Заглавие сайта">
       <div className="promo__text">
         <h1 className="promo__title">
           Учебный проект студента факультета Веб&#8209;разработки.
@@ -21,6 +22,6 @@ export default function Promo() {
         className="promo__illustration"
         src={illustration}
       />
-    </section>
+    </SectionWithBackground>
   );
 }

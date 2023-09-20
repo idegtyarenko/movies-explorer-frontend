@@ -1,0 +1,4 @@
+.section-with-background {
+  width: 100%;
+  background-color: var(--color-background-promo);
+}
