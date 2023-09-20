@@ -6,9 +6,10 @@ export default function SectionWithBackground({
   tagName: TagName = "section",
   className,
   children,
+  ...props
 }) {
   return (
-    <TagName className="section-with-background">
+    <TagName className="section-with-background" {...props}>
       <Section tagName="div" className={className}>
         {children}
       </Section>
