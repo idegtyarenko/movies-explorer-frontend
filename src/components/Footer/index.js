@@ -11,7 +11,7 @@ const navLinks = {
 
 export default function Footer() {
   return (
-    <Section tagName="footer" classes={["footer"]}>
+    <Section tagName="footer" className="footer">
       <p className="footer__acknowledgment">{acknowledgement}</p>
       <hr className="footer__separator" />
       <p className="footer__copyright">© {currentYear}</p>

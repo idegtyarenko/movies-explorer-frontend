@@ -2,9 +2,9 @@ import "./Section.css";
 
 export default function Section({
   tagName: TagName = "section",
-  classes = [],
+  className,
   children,
 }) {
-  const classNames = [...classes, "section"].join(" ");
+  const classNames = className ? [className, "section"].join(" ") : "section";
   return <TagName className={classNames}>{children}</TagName>;
 }

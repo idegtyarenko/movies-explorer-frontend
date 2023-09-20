@@ -4,12 +4,12 @@ import "./SectionWithBackground.css";
 
 export default function SectionWithBackground({
   tagName: TagName = "section",
-  classes = [],
+  className,
   children,
 }) {
   return (
     <TagName className="section-with-background">
-      <Section tagName="div" classes={classes}>
+      <Section tagName="div" className={className}>
         {children}
       </Section>
     </TagName>
