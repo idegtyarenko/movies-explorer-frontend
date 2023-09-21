@@ -1,2 +1,30 @@
 .about-project {
+  margin-block: 110px;
+}
+
+.about-project__factoids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 56px 40px;
+  padding-block: 70px;
+}
+
+@media screen and (max-width: 1024px) {
+  .about-project {
+    margin-block: 90px;
+  }
+
+  .about-project__factoids {
+    column-gap: 30px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .about-project {
+    margin-block: 70px;
+  }
+
+  .about-project__factoids {
+    padding-block: 60px;
+  }
 }

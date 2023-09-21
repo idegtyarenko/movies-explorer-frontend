@@ -8,11 +8,17 @@
 
   --color-background-primary: #202020;
   --color-background-secondary: #272727;
+  --color-background-tertiary: #303030;
   --color-background-promo: #073042;
 
   --color-text-primary: white;
   --color-text-secondary: #8b8b8b;
-  --color-borders: #424242;
+  --color-text-inverted: black;
+
+  --color-lines-primary: #dadada;
+  --color-lines-secondary: #424242;
+
+  --color-highlight: #3ddc84;
 
   --opacity-link-hover: 0.7;
   --duration-hover-animation: 0.2s;

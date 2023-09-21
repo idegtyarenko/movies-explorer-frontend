@@ -21,7 +21,7 @@
   grid-area: separator;
   border: none;
   height: 1px;
-  background-color: var(--color-borders);
+  background-color: var(--color-lines-secondary);
   margin: 0 0 20px;
 }
 

@@ -1,0 +1,52 @@
+.timeline {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 4fr;
+  padding-top: 40px;
+}
+
+.timeline__segment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  gap: 14px;
+}
+
+.timeline__bar {
+  margin: 0;
+  padding-block: 9px;
+  background-color: var(--color-background-tertiary);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.timeline__bar_highlighted {
+  background-color: var(--color-highlight);
+  color: var(--color-text-inverted);
+}
+
+.timeline__caption {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 428px) {
+  .timeline {
+    grid-template-columns: 100px auto;
+  }
+
+  .timeline__segment {
+    gap: 10px;
+  }
+
+  .timeline__bar {
+    font-size: 11px;
+  }
+
+  .timeline__caption {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
