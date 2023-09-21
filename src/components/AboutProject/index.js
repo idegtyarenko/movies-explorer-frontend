@@ -7,7 +7,7 @@ import Timeline from "./components/Timeline";
 
 export default function AboutProject() {
   return (
-    <Section className="about-project">
+    <Section className="about-project" aria-label="О проекте">
       <SectionTitle>О проекте</SectionTitle>
       <div className="about-project__factoids">
         <Factoid
