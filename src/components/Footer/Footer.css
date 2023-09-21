@@ -43,16 +43,6 @@
   gap: 20px;
 }
 
-.footer__link {
-  color: var(--color-text-primary);
-  text-decoration: none;
-  transition: opacity var(--duration-hover-animation) ease;
-}
-
-.footer__link:hover {
-  opacity: var(--opacity-link-hover);
-}
-
 @media screen and (max-width: 428px) {
   .footer {
     grid-template-columns: 1fr;

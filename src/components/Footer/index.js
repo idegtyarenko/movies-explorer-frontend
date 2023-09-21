@@ -1,5 +1,6 @@
 import Section from "../Section";
-import NavItem from "./NavItem";
+
+import NavItem from "./components/NavItem";
 import "./Footer.css";
 
 const currentYear = new Date().getFullYear();
