@@ -1,6 +1,7 @@
 .section-title {
   margin: 0;
   font-weight: 400;
+  letter-spacing: -0.44px;
   padding-bottom: 23px;
   border-bottom: 1px solid var(--color-lines-primary);
   font-size: 22px;
