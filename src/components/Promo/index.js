@@ -5,7 +5,11 @@ import "./Promo.css";
 
 export default function Promo() {
   return (
-    <SectionWithBackground className="promo" aria-label="Заглавие сайта">
+    <SectionWithBackground
+      className="promo"
+      aria-label="Заглавие сайта"
+      backgroundColor="var(--color-background-promo)"
+    >
       <div className="promo__text">
         <h1 className="promo__title">
           Учебный проект студента факультета Веб&#8209;разработки.
