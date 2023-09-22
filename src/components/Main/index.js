@@ -1,6 +1,7 @@
 import Promo from "../Promo";
 import AboutProject from "../AboutProject";
 import Techs from "../Techs";
+import AboutMe from "../AboutMe";
 
 export default function Main() {
   return (
@@ -8,6 +9,7 @@ export default function Main() {
       <Promo />
       <AboutProject />
       <Techs />
+      <AboutMe />
     </main>
   );
 }
