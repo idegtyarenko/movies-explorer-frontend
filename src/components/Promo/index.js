@@ -17,7 +17,7 @@ export default function Promo() {
         <p className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <a className="promo__button" href="#about">
+        <a className="promo__button opacity-on-hover" href="#about">
           Узнать больше
         </a>
       </div>

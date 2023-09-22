@@ -1,0 +1,7 @@
+.opacity-on-hover {
+  transition: opacity var(--duration-hover-animation) ease;
+}
+
+.opacity-on-hover:hover {
+  opacity: var(--opacity-link-hover);
+}

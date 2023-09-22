@@ -20,7 +20,7 @@ export default function AboutMe() {
           лингвистику, путешествия на яхтах, сноуборд.
         </p>
         <a
-          className="about-me__link"
+          className="about-me__link opacity-on-hover"
           href="https://github.com/idegtyarenko"
           target="_blank"
           rel="noreferrer"

@@ -4,7 +4,7 @@ export default function NavItem({ href, children }) {
   return (
     <li>
       <a
-        className="footer__nav-item"
+        className="footer__nav-item opacity-on-hover"
         href={href}
         target="_blank"
         rel="noreferrer"

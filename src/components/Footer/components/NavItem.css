@@ -1,9 +1,4 @@
 .footer__nav-item {
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: opacity var(--duration-hover-animation) ease;
-}
-
-.footer__nav-item:hover {
-  opacity: var(--opacity-link-hover);
 }

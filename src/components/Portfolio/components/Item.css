@@ -10,7 +10,6 @@
   justify-content: space-between;
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: opacity var(--duration-hover-animation) ease;
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -1.2px;
@@ -18,10 +17,6 @@
 
 .portfolio__link::after {
   content: "↗";
-}
-
-.portfolio__link:hover {
-  opacity: var(--opacity-link-hover);
 }
 
 @media screen and (max-width: 1024px) {
