@@ -24,11 +24,13 @@
 .techs__list {
   padding: 0;
   margin: 100px 0 0;
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 90px);
+  grid-auto-rows: 60px;
+  justify-content: center;
   list-style: none;
   gap: 10px;
-  justify-content: center;
 }
 
 @media screen and (max-width: 1024px) {
@@ -47,6 +49,8 @@
 
   .techs__list {
     margin-top: 83px;
+    grid-template-columns: repeat(auto-fit, 84px);
+    grid-auto-rows: 57px;
   }
 }
 
@@ -68,6 +72,6 @@
 
   .techs__list {
     margin-top: 50px;
-    margin-inline: 50px;
+    width: 80%;
   }
 }
