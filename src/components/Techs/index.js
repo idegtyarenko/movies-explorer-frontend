@@ -21,7 +21,7 @@ export default function Techs() {
       </p>
       <ul className="techs__list">
         {techs.map((item) => (
-          <TechItem>{item}</TechItem>
+          <TechItem key={item}>{item}</TechItem>
         ))}
       </ul>
     </SectionWithBackground>
