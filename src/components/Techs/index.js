@@ -14,7 +14,7 @@ export default function Techs() {
       className="techs section_tablet-margins_l section_mobile-margins_l"
     >
       <SectionTitle>Технологии</SectionTitle>
-      <h2 className="techs__title">7 технологий</h2>
+      <p className="techs__title">7 технологий</p>
       <p className="techs__subtitle">
         На курсе веб-разработки мы освоили технологии, которые применили
         в дипломном проекте.
