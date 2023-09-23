@@ -6,7 +6,10 @@ import "./AboutMe.css";
 
 export default function AboutMe() {
   return (
-    <Section className="about-me" aria-label="Студент">
+    <Section
+      className="about-me section_tablet-margins_l section_mobile-margins_m"
+      aria-label="Студент"
+    >
       <SectionTitle>Студент</SectionTitle>
       <div className="about-me__text">
         <h3 className="about-me__name">Иван</h3>

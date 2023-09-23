@@ -11,7 +11,10 @@ export default function AboutMe() {
       "https://github.com/idegtyarenko/react-mesto-api-full-gha",
   };
   return (
-    <Section className="portfolio" aria-label="Портфолио">
+    <Section
+      className="portfolio section_tablet-margins_l section_mobile-margins_m"
+      aria-label="Портфолио"
+    >
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio__list">
         {Object.entries(links).map(([text, href]) => (

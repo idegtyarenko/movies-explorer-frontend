@@ -1,11 +1,4 @@
 .app {
-  --max-width-page: 1140px;
-  --min-width-page: 320px;
-  --margin-page-side: 30px;
-  --margin-page-side-mobile: 14px;
-  --width-section: calc(100% - 2 * var(--margin-page-side));
-  --width-section-mobile: calc(100% - 2 * var(--margin-page-side-mobile));
-
   --color-background-primary: #202020;
   --color-background-secondary: #272727;
   --color-background-tertiary: #303030;

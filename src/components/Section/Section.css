@@ -1,11 +1,31 @@
 .section {
-  width: var(--width-section);
-  max-width: var(--max-width-page);
+  --default-margin: 30px;
+  max-width: 1140px;
+  width: calc(100% - 2 * var(--default-margin));
   margin-inline: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .section {
+    width: auto;
+    margin-inline: var(--default-margin);
+  }
+
+  .section_tablet-margins_l {
+    margin-inline: 50px;
+  }
 }
 
 @media screen and (max-width: 428px) {
   .section {
-    width: var(--width-section-mobile);
+    margin-inline: 10px;
+  }
+
+  .section_mobile-margins_m {
+    margin-inline: 14px;
+  }
+
+  .section_mobile-margins_l {
+    margin-inline: 18px;
   }
 }

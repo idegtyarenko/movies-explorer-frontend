@@ -11,7 +11,7 @@ export default function Techs() {
     <SectionWithBackground
       backgroundColor="var(--color-background-secondary)"
       aria-label="Технологии"
-      className="techs"
+      className="techs section_tablet-margins_l section_mobile-margins_l"
     >
       <SectionTitle>Технологии</SectionTitle>
       <h2 className="techs__title">7 технологий</h2>
