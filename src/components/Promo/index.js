@@ -1,5 +1,5 @@
 import SectionWithBackground from "../SectionWithBackground";
-import illustration from "../../images/globe.svg";
+import illustration from "images/globe.svg";
 
 import "./Promo.css";
 

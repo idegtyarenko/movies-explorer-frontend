@@ -1,6 +1,6 @@
 import Section from "../Section";
 import SectionTitle from "../SectionTitle";
-import photo from "../../images/ivan.webp";
+import photo from "images/ivan.webp";
 
 import "./AboutMe.css";
 
