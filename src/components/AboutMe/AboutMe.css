@@ -34,9 +34,12 @@
 }
 
 .about-me__link {
+  margin: 0;
   text-decoration: none;
   align-self: flex-start;
   color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .about-me__photo {

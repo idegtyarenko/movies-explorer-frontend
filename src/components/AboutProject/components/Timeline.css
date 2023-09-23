@@ -32,9 +32,16 @@
   line-height: 17px;
 }
 
+@media screen and (max-width: 1024px) {
+  .timeline {
+    padding-top: 23px;
+  }
+}
+
 @media screen and (max-width: 428px) {
   .timeline {
     grid-template-columns: 100px auto;
+    padding-top: 0;
   }
 
   .timeline__segment {
