@@ -1,4 +1,5 @@
-import SectionWithBackground from "../SectionWithBackground";
+import SectionWithBackground from "components/SectionWithBackground";
+import Link from "components/Link";
 import illustration from "images/globe.svg";
 
 import "./Promo.css";
@@ -17,9 +18,9 @@ export default function Promo() {
         <p className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <a className="promo__button opacity-on-hover" href="#about">
+        <Link className="promo__button" to="#about-project">
           Узнать больше
-        </a>
+        </Link>
       </div>
       <img
         alt="Иллюстрация: глобус, состоящий из надписей WEB"

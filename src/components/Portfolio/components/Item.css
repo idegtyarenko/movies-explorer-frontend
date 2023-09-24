@@ -3,13 +3,10 @@
 }
 
 .portfolio__link {
-  margin: 0;
   padding-block: 20px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  color: var(--color-text-primary);
-  text-decoration: none;
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -1.2px;

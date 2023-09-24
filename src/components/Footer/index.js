@@ -1,6 +1,6 @@
-import Section from "../Section";
+import Section from "components/Section";
+import Link from "components/Link";
 
-import NavItem from "./components/NavItem";
 import "./Footer.css";
 
 const currentYear = new Date().getFullYear();
@@ -19,9 +19,9 @@ export default function Footer() {
       <nav className="footer__nav">
         <ul className="footer__links">
           {Object.entries(navLinks).map(([text, href]) => (
-            <NavItem key={text} href={href}>
-              {text}
-            </NavItem>
+            <li key={text}>
+              <Link to={href}>{text}</Link>
+            </li>
           ))}
         </ul>
       </nav>

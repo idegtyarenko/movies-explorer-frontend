@@ -1,5 +1,6 @@
-import Section from "../Section";
-import SectionTitle from "../SectionTitle";
+import Section from "components/Section";
+import SectionTitle from "components/SectionTitle";
+import Link from "components/Link";
 import photo from "images/ivan.webp";
 
 import "./AboutMe.css";
@@ -22,14 +23,9 @@ export default function AboutMe() {
           Кандидат психологических наук. Люблю блюз и губную гармонику,
           лингвистику, путешествия на яхтах, сноуборд.
         </p>
-        <a
-          className="about-me__link opacity-on-hover"
-          href="https://github.com/idegtyarenko"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link className="about-me__link" to="https://github.com/idegtyarenko">
           GitHub
-        </a>
+        </Link>
       </div>
       <img className="about-me__photo" alt="Фото Ивана" src={photo} />
     </Section>

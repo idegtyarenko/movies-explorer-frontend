@@ -8,6 +8,7 @@ import Timeline from "./components/Timeline";
 export default function AboutProject() {
   return (
     <Section
+      id="about-project"
       className="about-project section_tablet-margins_l section_mobile-margins_l"
       aria-label="О проекте"
     >

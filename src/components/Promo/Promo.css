@@ -34,9 +34,6 @@
 }
 
 .promo__button {
-  color: var(--color-text-primary);
-  text-decoration: none;
-  margin: 0;
   padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 3px;
