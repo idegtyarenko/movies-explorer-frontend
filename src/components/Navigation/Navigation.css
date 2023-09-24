@@ -59,3 +59,27 @@
   background-color: var(--color-highlight);
   border-radius: 3px;
 }
+
+@media screen and (max-width: 1024px) {
+  .navigation__sections {
+    display: none;
+  }
+
+  .navigation__link_icon_profile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__auth {
+    gap: 14px;
+  }
+
+  .navigation__link_appearance_button {
+    padding: 5px 12px;
+  }
+
+  .navigation__link_size_s {
+    font-size: 10px;
+  }
+}
