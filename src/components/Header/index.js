@@ -1,7 +1,7 @@
-import Section from "../Section";
-import Logo from "../Logo";
-import Navigation from "../Navigation";
+import Section from "ui/Section";
+import Logo from "ui/Logo";
 
+import Navigation from "./components/Navigation";
 import Burger from "./components/Burger";
 
 import "./Header.css";

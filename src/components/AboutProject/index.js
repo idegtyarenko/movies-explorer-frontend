@@ -1,5 +1,5 @@
-import Section from "../Section";
-import SectionTitle from "../SectionTitle";
+import Section from "../../ui/Section";
+import SectionTitle from "../../ui/SectionTitle";
 
 import "./AboutProject.css";
 import Factoid from "./components/Factoid";

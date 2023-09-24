@@ -1,4 +1,4 @@
-import Section from "../Section";
+import Section from "../../ui/Section";
 
 import "./Portfolio.css";
 import Item from "./components/Item";

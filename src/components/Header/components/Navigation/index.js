@@ -1,4 +1,4 @@
-import Link from "components/Link";
+import Link from "ui/Link";
 import { joinClassNames } from "utils/utils.js";
 
 import "./Navigation.css";

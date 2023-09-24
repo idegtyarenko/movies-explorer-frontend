@@ -1,6 +1,6 @@
-import Section from "components/Section";
-import SectionTitle from "components/SectionTitle";
-import Link from "components/Link";
+import Section from "ui/Section";
+import SectionTitle from "ui/SectionTitle";
+import Link from "ui/Link";
 import photo from "images/ivan.webp";
 
 import "./AboutMe.css";

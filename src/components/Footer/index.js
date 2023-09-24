@@ -1,5 +1,5 @@
-import Section from "components/Section";
-import Link from "components/Link";
+import Section from "ui/Section";
+import Link from "ui/Link";
 
 import "./Footer.css";
 

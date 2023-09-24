@@ -1,5 +1,5 @@
-import SectionWithBackground from "components/SectionWithBackground";
-import Link from "components/Link";
+import SectionWithBackground from "ui/SectionWithBackground";
+import Link from "ui/Link";
 import illustration from "images/globe.svg";
 
 import "./Promo.css";

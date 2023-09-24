@@ -1,13 +1,19 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
-import App from "./components/App";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import Main from "pages/Main";
+import Profile from "pages/Profile";
+import "styles/index.css";
+
+const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>,
 );
