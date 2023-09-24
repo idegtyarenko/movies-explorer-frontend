@@ -1,2 +1,59 @@
 .navigation {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navigation__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.navigation__sections {
+  justify-content: center;
+  gap: 16px;
+}
+
+.navigation__auth {
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.navigation__link {
+  margin: 0;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-size: 13px;
+}
+
+.navigation__link_mobile-only {
+  display: none;
+}
+
+.navigation__link_weight_medium {
+  font-weight: 500;
+}
+
+.navigation__link_size_s {
+  font-size: 12px;
+}
+
+.navigation__link_icon_profile {
+  min-width: 64px;
+  text-align: right;
+  padding-right: 36px;
+  padding-block: 10px;
+  background-image: url("images/profile.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.navigation__link_appearance_button {
+  color: var(--color-text-inverted);
+  padding: 8px 20px;
+  background-color: var(--color-highlight);
+  border-radius: 3px;
 }

@@ -2,46 +2,75 @@ import { Link } from "react-router-dom";
 
 import "./Navigation.css";
 
-export default function Navigation({ isLoggedIn = true }) {
+export default function Navigation({ isLoggedIn }) {
   return (
     <nav className="navigation">
-      {isLoggedIn && (
-        <ul className="navigation__sections">
-          <li>
-            <Link className="navigation__link" to="/movies">
-              Фильмы
-            </Link>
-          </li>
-          <li className="navigation__link">
-            <Link className="navigation__link" to="/saved-movies">
-              Сохранённые фильмы
-            </Link>
-          </li>
-        </ul>
-      )}
-      {isLoggedIn ? (
-        <Link className="navigation__account" to="/profile">
-          <p className="navigation__link navigation__link_icon_account">
-            Аккаунт
-          </p>
-        </Link>
-      ) : (
-        <ul className="navigation__account">
-          <li>
-            <Link className="navigation__link" to="/signup">
-              Регистрация
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="navigation__link navigation__link_appearance_button"
-              to="/signin"
-            >
-              Войти
-            </Link>
-          </li>
-        </ul>
-      )}
+      {isLoggedIn && <Sections />}
+      {isLoggedIn ? <ProfileButton /> : <AuthButtons />}
     </nav>
+  );
+}
+
+function Sections() {
+  return (
+    <ul className="navigation__list navigation__sections">
+      <li>
+        <NavLink className="navigation__link_mobile-only" to="/">
+          Главная
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/movies">Фильмы</NavLink>
+      </li>
+      <li>
+        <NavLink to="/saved-movies">Сохранённые фильмы</NavLink>
+      </li>
+    </ul>
+  );
+}
+
+function ProfileButton() {
+  return (
+    <NavLink
+      className="navigation__link_icon_profile navigation__link_weight_medium"
+      to="/profile"
+    >
+      Аккаунт
+    </NavLink>
+  );
+}
+
+function AuthButtons() {
+  return (
+    <ul className="navigation__list navigation__auth">
+      <li>
+        <NavLink
+          className="navigation__link_weight_medium navigation__link_size_s"
+          to="/signup"
+        >
+          Регистрация
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="navigation__link_appearance_button navigation__link_weight_medium navigation__link_size_s"
+          to="/signin"
+        >
+          Войти
+        </NavLink>
+      </li>
+    </ul>
+  );
+}
+
+function NavLink({ className, to, children }) {
+  const defaultClasses = "navigation__link opacity-on-hover";
+  const classes = className
+    ? [defaultClasses, className].join(" ")
+    : defaultClasses;
+  return (
+    <Link className={classes} to={to}>
+      {children}
+    </Link>
   );
 }

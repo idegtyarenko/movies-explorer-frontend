@@ -1,15 +1,19 @@
+import Section from "../Section";
 import Logo from "../Logo";
 import Navigation from "../Navigation";
-import Menu from "../Menu";
+
+import Burger from "./components/Burger";
 
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ isLoggedIn }) {
   return (
     <header className="header">
-      <Logo />
-      <Navigation />
-      <Menu />
+      <Section className="header__wrapper section_mobile-margins_m section_no-auto-width">
+        <Logo />
+        <Navigation isLoggedIn={isLoggedIn} />
+        {isLoggedIn && <Burger />}
+      </Section>
     </header>
   );
 }
