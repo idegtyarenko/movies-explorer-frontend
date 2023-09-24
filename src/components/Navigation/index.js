@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import Link from "components/Link";
+import { joinClassNames } from "utils/utils.js";
 
 import "./Navigation.css";
 
 export default function Navigation({ isLoggedIn }) {
   return (
-    <nav className="navigation">
+    <nav
+      className={joinClassNames([
+        "navigation",
+        isLoggedIn ? "navigation_is-logged-in" : null,
+      ])}
+    >
       {isLoggedIn && <Sections />}
       {isLoggedIn ? <ProfileButton /> : <AuthButtons />}
     </nav>
@@ -15,15 +21,19 @@ function Sections() {
   return (
     <ul className="navigation__list navigation__sections">
       <li>
-        <NavLink className="navigation__link_mobile-only" to="/">
+        <Link className="navigation__link_mobile-only" to="/">
           Главная
-        </NavLink>
+        </Link>
       </li>
       <li>
-        <NavLink to="/movies">Фильмы</NavLink>
+        <Link className="navigation__link" to="/movies">
+          Фильмы
+        </Link>
       </li>
       <li>
-        <NavLink to="/saved-movies">Сохранённые фильмы</NavLink>
+        <Link className="navigation__link" to="/saved-movies">
+          Сохранённые фильмы
+        </Link>
       </li>
     </ul>
   );
@@ -31,12 +41,12 @@ function Sections() {
 
 function ProfileButton() {
   return (
-    <NavLink
-      className="navigation__link_icon_profile navigation__link_weight_medium"
+    <Link
+      className="navigation__link navigation__link_icon_profile navigation__link_weight_medium"
       to="/profile"
     >
       Аккаунт
-    </NavLink>
+    </Link>
   );
 }
 
@@ -44,33 +54,21 @@ function AuthButtons() {
   return (
     <ul className="navigation__list navigation__auth">
       <li>
-        <NavLink
-          className="navigation__link_weight_medium navigation__link_size_s"
+        <Link
+          className="navigation__link navigation__link_weight_medium navigation__link_size_s"
           to="/signup"
         >
           Регистрация
-        </NavLink>
+        </Link>
       </li>
       <li>
-        <NavLink
-          className="navigation__link_appearance_button navigation__link_weight_medium navigation__link_size_s"
+        <Link
+          className="navigation__link navigation__link_appearance_button navigation__link_weight_medium navigation__link_size_s"
           to="/signin"
         >
           Войти
-        </NavLink>
+        </Link>
       </li>
     </ul>
-  );
-}
-
-function NavLink({ className, to, children }) {
-  const defaultClasses = "navigation__link opacity-on-hover";
-  const classes = className
-    ? [defaultClasses, className].join(" ")
-    : defaultClasses;
-  return (
-    <Link className={classes} to={to}>
-      {children}
-    </Link>
   );
 }

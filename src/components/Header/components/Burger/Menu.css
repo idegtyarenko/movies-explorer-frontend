@@ -6,7 +6,6 @@
   border: none;
   cursor: pointer;
   background-image: url(images/burger.svg);
-  z-index: 10;
 }
 
 @media screen and (max-width: 1024px) {
