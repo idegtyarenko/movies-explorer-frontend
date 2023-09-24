@@ -6,6 +6,7 @@
 
 .navigation__list {
   display: flex;
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -24,6 +25,7 @@
 
 .navigation__link {
   margin: 0;
+  display: block;
   text-decoration: none;
   color: var(--color-text-primary);
   font-size: 13px;
