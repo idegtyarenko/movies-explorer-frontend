@@ -1,5 +1,5 @@
-import SectionWithBackground from "../../ui/SectionWithBackground";
-import SectionTitle from "../../ui/SectionTitle";
+import SectionWithBackground from "ui/SectionWithBackground";
+import SectionTitle from "ui/SectionTitle";
 
 import "./Techs.css";
 import TechItem from "./components/TechItem";
