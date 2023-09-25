@@ -1,17 +1,10 @@
 .menu {
-  display: none;
   width: 44px;
   height: 44px;
   background: none;
   border: none;
   cursor: pointer;
   background-image: url(images/burger.svg);
-}
-
-@media screen and (max-width: 1024px) {
-  .menu {
-    display: block;
-  }
 }
 
 @media screen and (max-width: 428px) {

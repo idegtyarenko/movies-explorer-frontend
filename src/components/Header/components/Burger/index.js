@@ -2,6 +2,6 @@ import "./Burger.css";
 
 export default function Menu() {
   return (
-    <button className="menu opacity-on-hover" type="button" aria-label="Меню" />
+    <button className="menu except-desktop" type="button" aria-label="Меню" />
   );
 }
