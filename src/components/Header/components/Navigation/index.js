@@ -1,6 +1,7 @@
 import Link from "ui/Link";
 import { joinClassNames } from "utils/utils";
 
+import Section from "./components/Section";
 import "./Navigation.css";
 
 export default function Navigation({ isMenuOpen }) {
@@ -12,21 +13,11 @@ export default function Navigation({ isMenuOpen }) {
       ])}
     >
       <ul className="navigation__sections">
-        <li className="except-desktop">
-          <Link className="navigation__link" to="/">
-            Главная
-          </Link>
-        </li>
-        <li>
-          <Link className="navigation__link" to="/movies">
-            Фильмы
-          </Link>
-        </li>
-        <li>
-          <Link className="navigation__link" to="/saved-movies">
-            Сохранённые фильмы
-          </Link>
-        </li>
+        <Section className="except-desktop" to="/">
+          Главная
+        </Section>
+        <Section to="/movies">Фильмы</Section>
+        <Section to="/saved-movies">Сохранённые фильмы</Section>
       </ul>
       <Link className="navigation__profile" to="/profile">
         Аккаунт
