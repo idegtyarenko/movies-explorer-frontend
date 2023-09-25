@@ -1,0 +1,11 @@
+.section-wrapper {
+  width: 100%;
+}
+
+.section-wrapper_background_promo {
+  background-color: var(--color-background-promo);
+}
+
+.section-wrapper_background_secondary {
+  background-color: var(--color-background-secondary);
+}

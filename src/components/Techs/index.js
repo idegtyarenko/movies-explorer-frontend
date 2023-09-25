@@ -1,4 +1,4 @@
-import SectionWithBackground from "ui/SectionWithBackground";
+import { SectionWithWrapper } from "ui/Section";
 import SectionTitle from "ui/SectionTitle";
 
 import "./Techs.css";
@@ -8,8 +8,8 @@ export default function Techs() {
   const techs = ["HTML", "CSS", "JS", "React", "Git", "Express.js", "mongoDB"];
 
   return (
-    <SectionWithBackground
-      backgroundColor="var(--color-background-secondary)"
+    <SectionWithWrapper
+      backgroundColorName="secondary"
       aria-label="Технологии"
       className="techs section_tablet-margins_l section_mobile-margins_l"
     >
@@ -24,6 +24,6 @@ export default function Techs() {
           <TechItem key={item}>{item}</TechItem>
         ))}
       </ul>
-    </SectionWithBackground>
+    </SectionWithWrapper>
   );
 }

@@ -1,4 +1,4 @@
-import SectionWithBackground from "ui/SectionWithBackground";
+import { SectionWithWrapper } from "ui/Section";
 import Link from "ui/Link";
 import illustration from "images/globe.svg";
 
@@ -6,10 +6,10 @@ import "./Promo.css";
 
 export default function Promo() {
   return (
-    <SectionWithBackground
+    <SectionWithWrapper
       className="promo"
+      backgroundColorName="promo"
       aria-label="Заглавие сайта"
-      backgroundColor="var(--color-background-promo)"
     >
       <div className="promo__text">
         <h1 className="promo__title">
@@ -27,6 +27,6 @@ export default function Promo() {
         className="promo__illustration"
         src={illustration}
       />
-    </SectionWithBackground>
+    </SectionWithWrapper>
   );
 }
