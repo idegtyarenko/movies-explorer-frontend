@@ -1,4 +1,4 @@
-import { joinClassNames } from "utils/utils.js";
+import { joinClassNames } from "utils/utils";
 
 import UrlLink from "./components/UrlLink";
 import RouterLink from "./components/RouterLink";

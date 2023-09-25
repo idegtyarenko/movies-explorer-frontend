@@ -1,5 +1,5 @@
 import Link from "ui/Link";
-import { joinClassNames } from "utils/utils.js";
+import { joinClassNames } from "utils/utils";
 
 import "./Navigation.css";
 
