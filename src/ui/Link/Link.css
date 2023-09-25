@@ -3,3 +3,13 @@
   text-decoration: none;
   color: inherit;
 }
+
+.link_color_button {
+  color: var(--color-button);
+}
+
+.link_type_button {
+  background-color: inherit;
+  border: inherit;
+  padding: inherit;
+}

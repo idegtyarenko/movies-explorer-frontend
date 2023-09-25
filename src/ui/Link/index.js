@@ -3,6 +3,7 @@ import { joinClassNames } from "utils/utils";
 import UrlLink from "./components/UrlLink";
 import RouterLink from "./components/RouterLink";
 import AnchorLink from "./components/AnchorLink";
+import ButtonLink from "./components/ButtonLink";
 import "./Link.css";
 
 export default function Link({ className, to, children }) {
@@ -18,7 +19,9 @@ export default function Link({ className, to, children }) {
 function chooseLinkComponent(link) {
   const anchorLinkPattern = /^#[a-zA-Z_][\w-]*$/;
 
-  if (link.includes("://")) {
+  if (!link) {
+    return ButtonLink;
+  } else if (link.includes(":")) {
     return UrlLink;
   } else if (anchorLinkPattern.test(link)) {
     return AnchorLink;
