@@ -6,6 +6,7 @@
 
 .html {
   background-color: var(--color-background-primary);
+  scroll-behavior: smooth;
 }
 
 .app {
