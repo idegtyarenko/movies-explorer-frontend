@@ -1,5 +1,9 @@
-import Header from "components/Header";
+import HeaderLayout from "layouts/HeaderLayout";
 
 export default function Profile() {
-  return <Header isLoggedIn={true} />;
+  return (
+    <HeaderLayout isLoggedIn={true}>
+      <p>Hello world</p>
+    </HeaderLayout>
+  );
 }
