@@ -1,0 +1,36 @@
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.auth-buttons__link {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.auth-buttons__link_has-background {
+  color: var(--color-text-inverted);
+  padding: 8px 20px;
+  background-color: var(--color-highlight);
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 428px) {
+  .auth-buttons {
+    gap: 14px;
+  }
+
+  .auth-buttons__link {
+    font-size: 10px;
+  }
+
+  .auth-buttons__link_has-background {
+    padding: 5px 12px;
+  }
+}

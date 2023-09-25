@@ -2,6 +2,7 @@
 @import url("vendor/fonts/fonts.css");
 
 @import url("./tokens.css");
+@import url("./mixins.css");
 
 .html {
   background-color: var(--color-background-primary);

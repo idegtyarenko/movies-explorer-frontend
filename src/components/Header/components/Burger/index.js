@@ -1,4 +1,4 @@
-import "./Menu.css";
+import "./Burger.css";
 
 export default function Menu() {
   return (
