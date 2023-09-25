@@ -1,4 +1,5 @@
 import Link from "ui/Link";
+import IconButton from "ui/IconButton";
 import { joinClassNames } from "utils/utils";
 
 import Section from "./components/Section";
@@ -12,6 +13,10 @@ export default function Navigation({ isMenuOpen }) {
         isMenuOpen && "navigation_is-menu-open",
       ])}
     >
+      <IconButton
+        className="navigation__close-menu except-desktop"
+        ariaLabel="Закрыть меню"
+      />
       <ul className="navigation__sections">
         <Section className="except-desktop" to="/">
           Главная

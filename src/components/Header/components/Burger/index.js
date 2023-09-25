@@ -7,7 +7,7 @@ export default function Menu() {
     <IconButton
       className="burger except-desktop"
       type="button"
-      ariaLabel="Меню"
+      ariaLabel="Открыть меню"
     />
   );
 }
