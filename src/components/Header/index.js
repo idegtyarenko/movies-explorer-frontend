@@ -10,6 +10,7 @@ import "./Header.css";
 export default function Header({ isLoggedIn }) {
   return (
     <SectionWithWrapper
+      tagName="header"
       wrapperClassName="header"
       className="header__wrapper section_mobile-margins_m section_no-auto-width"
     >
