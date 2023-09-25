@@ -6,7 +6,7 @@ import AnchorLink from "./components/AnchorLink";
 import "./Link.css";
 
 export default function Link({ className, to, children }) {
-  const defaultClass = "link";
+  const defaultClass = "link link-hover-animation";
   const Component = chooseLinkComponent(to);
   return (
     <Component className={joinClassNames([defaultClass, className])} to={to}>

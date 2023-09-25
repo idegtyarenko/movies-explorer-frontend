@@ -1,7 +1,13 @@
+import IconButton from "ui/IconButton";
+
 import "./Burger.css";
 
 export default function Menu() {
   return (
-    <button className="menu except-desktop" type="button" aria-label="Меню" />
+    <IconButton
+      className="burger except-desktop"
+      type="button"
+      ariaLabel="Меню"
+    />
   );
 }

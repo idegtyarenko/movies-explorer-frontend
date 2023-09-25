@@ -7,3 +7,11 @@
     display: inherit;
   }
 }
+
+.link-hover-animation {
+  transition: opacity var(--duration-hover-animation) ease;
+}
+
+.link-hover-animation:hover {
+  opacity: var(--opacity-link-hover);
+}

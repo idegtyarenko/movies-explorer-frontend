@@ -2,9 +2,4 @@
   margin: 0;
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-hover-animation) ease;
-}
-
-.link:hover {
-  opacity: var(--opacity-link-hover);
 }
