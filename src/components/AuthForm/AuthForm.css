@@ -46,6 +46,11 @@
   line-height: 17px;
 }
 
+.auth-form__button_state_disabled {
+  color: var(--color-text-secondary);
+  background-color: var(--color-background-fields);
+}
+
 @media screen and (max-width: 428px) {
   .auth-form__top {
     align-items: center;
