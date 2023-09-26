@@ -9,9 +9,9 @@
 }
 
 .link-hover-animation {
-  transition: opacity var(--duration-hover-animation) ease;
+  transition: opacity var(--duration-animation-default) ease;
 }
 
 .link-hover-animation:hover {
-  opacity: var(--opacity-link-hover);
+  opacity: 0.7;
 }

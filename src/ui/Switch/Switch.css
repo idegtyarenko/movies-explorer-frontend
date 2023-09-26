@@ -3,7 +3,7 @@
   align-items: center;
   gap: 14px;
   font-size: 11px;
-  --animation-length: 0.2s;
+  --animation-length: var(--duration-animation-default);
 }
 
 .switch__input {
@@ -36,6 +36,6 @@
 }
 
 .switch__input:checked::after {
-  background-color: white;
+  background-color: var(--color-text-primary);
   transform: translateX(16px);
 }

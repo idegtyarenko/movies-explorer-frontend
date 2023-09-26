@@ -16,8 +16,7 @@
   --color-warning: #ee3465;
   --color-button: #4285f4;
 
-  --opacity-link-hover: 0.7;
-  --duration-hover-animation: 0.2s;
+  --duration-animation-default: 0.2s;
 
   --header-height: 74px;
 }
