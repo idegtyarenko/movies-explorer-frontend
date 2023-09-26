@@ -1,5 +1,5 @@
 .switch {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 14px;
   font-size: 11px;

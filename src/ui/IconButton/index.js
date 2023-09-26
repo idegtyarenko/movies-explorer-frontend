@@ -2,7 +2,12 @@ import { joinClassNames } from "utils/utils";
 
 import "./IconButton.css";
 
-export default function IconButton({ className, ariaLabel, ...props }) {
+export default function IconButton({
+  className,
+  ariaLabel,
+  type = "button",
+  ...props
+}) {
   const defaultClass = "button link-hover-animation";
   if (!ariaLabel) {
     console.error('"ariaLabel" is a required prop for IconButton component.');
@@ -11,8 +16,9 @@ export default function IconButton({ className, ariaLabel, ...props }) {
   return (
     <button
       className={joinClassNames([defaultClass, className])}
-      type="button"
+      type={type}
       aria-label={ariaLabel}
+      {...props}
     />
   );
 }
