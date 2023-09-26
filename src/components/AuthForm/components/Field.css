@@ -1,0 +1,29 @@
+.auth-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.auth-form__field-label {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.auth-form__field-input {
+  background-color: var(--color-background-fields);
+  border-radius: 8px;
+  border: none;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.auth-form__field-error {
+  margin: 0;
+  color: var(--color-warning);
+  font-size: 10px;
+  line-height: 1;
+  min-height: 10px;
+}

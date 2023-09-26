@@ -12,3 +12,7 @@
   align-items: center;
   min-height: var(--header-height);
 }
+
+.header__logo {
+  margin-right: 62px;
+}

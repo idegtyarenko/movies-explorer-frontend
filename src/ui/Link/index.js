@@ -6,26 +6,32 @@ import AnchorLink from "./components/AnchorLink";
 import ButtonLink from "./components/ButtonLink";
 import "./Link.css";
 
-export default function Link({ className, to, children }) {
+export default function Link({ className, to, type, form, children }) {
   const defaultClass = "link link-hover-animation";
   const Component = chooseLinkComponent(to);
+
+  function chooseLinkComponent(link) {
+    const anchorLinkPattern = /^#[a-zA-Z_][\w-]*$/;
+
+    if (!link) {
+      return ButtonLink;
+    } else if (link.includes(":")) {
+      return UrlLink;
+    } else if (anchorLinkPattern.test(link)) {
+      return AnchorLink;
+    } else {
+      return RouterLink;
+    }
+  }
+
   return (
-    <Component className={joinClassNames([defaultClass, className])} to={to}>
+    <Component
+      className={joinClassNames([defaultClass, className])}
+      to={to}
+      type={type}
+      form={form}
+    >
       {children}
     </Component>
   );
-}
-
-function chooseLinkComponent(link) {
-  const anchorLinkPattern = /^#[a-zA-Z_][\w-]*$/;
-
-  if (!link) {
-    return ButtonLink;
-  } else if (link.includes(":")) {
-    return UrlLink;
-  } else if (anchorLinkPattern.test(link)) {
-    return AnchorLink;
-  } else {
-    return RouterLink;
-  }
 }

@@ -1,0 +1,33 @@
+.hint-link {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.hint-link__text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.hint-link__link {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 428px) {
+  .hint-link {
+    margin-top: 14px;
+  }
+
+  .hint-link__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .hint-link__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

@@ -1,0 +1,8 @@
+.field-input {
+  font-family: inherit;
+  color: inherit;
+}
+
+.field-input:focus {
+  outline: none;
+}

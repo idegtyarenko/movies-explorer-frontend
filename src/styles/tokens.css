@@ -3,6 +3,7 @@
   --color-background-secondary: #272727;
   --color-background-tertiary: #303030;
   --color-background-promo: #073042;
+  --color-background-fields: #2f2f2f;
 
   --color-text-primary: white;
   --color-text-secondary: #8b8b8b;
@@ -12,6 +13,7 @@
   --color-lines-secondary: #424242;
 
   --color-highlight: #3ddc84;
+  --color-warning: #ee3465;
   --color-button: #4285f4;
 
   --opacity-link-hover: 0.7;

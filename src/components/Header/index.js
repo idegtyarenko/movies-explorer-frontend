@@ -14,7 +14,7 @@ export default function Header({ isLoggedIn }) {
       wrapperClassName="header"
       className="header__wrapper section_mobile-margins_m section_no-auto-width"
     >
-      <Logo />
+      <Logo className="header__logo" />
       {isLoggedIn ? (
         <>
           <Navigation isMenuOpen={false} />
