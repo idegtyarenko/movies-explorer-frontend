@@ -6,3 +6,7 @@
 .field-input:focus {
   outline: none;
 }
+
+.field-input_state_invalid {
+  color: var(--color-warning);
+}
