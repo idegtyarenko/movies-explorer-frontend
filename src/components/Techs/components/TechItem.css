@@ -9,7 +9,7 @@
   letter-spacing: -0.56px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .techs__item {
     font-size: 12px;
     letter-spacing: -0.48px;

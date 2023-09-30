@@ -34,7 +34,7 @@
   gap: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .techs {
     padding-block: 90px;
   }

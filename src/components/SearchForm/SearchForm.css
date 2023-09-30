@@ -45,7 +45,7 @@
   background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .search-form {
     --own-padding-top: 66px;
     padding-bottom: 60px;

@@ -44,7 +44,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .about-me {
     margin-block: 90px;
     grid-template-columns: auto min(37%, 255px);

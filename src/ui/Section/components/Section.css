@@ -6,7 +6,7 @@
   margin-inline: auto;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .section_tablet-margins_l {
     padding-inline: 50px;
   }

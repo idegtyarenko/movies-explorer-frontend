@@ -15,7 +15,7 @@
   list-style: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .portfolio {
     margin-block: 90px 70px;
   }
