@@ -33,5 +33,6 @@
 }
 
 .card__button {
+  display: flex;
   margin: 14px 12px;
 }

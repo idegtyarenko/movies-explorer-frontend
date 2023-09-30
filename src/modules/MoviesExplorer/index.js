@@ -5,7 +5,7 @@ export default function MoviesExplorer({ savedMovies = false }) {
   return (
     <>
       <SearchForm />
-      <MovieCardsGrid />
+      <MovieCardsGrid savedMovies={savedMovies} />
     </>
   );
 }
