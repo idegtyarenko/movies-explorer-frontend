@@ -1,6 +1,6 @@
 .search-form {
-  --own-padding-top: 56px;
-  padding-top: calc(var(--own-padding-top) + var(--header-height));
+  padding-top: 56px;
+  margin-top: var(--header-height);
   padding-bottom: 47px;
 }
 
@@ -47,7 +47,7 @@
 
 @media screen and (max-width: 768px) {
   .search-form {
-    --own-padding-top: 66px;
+    padding-top: 66px;
     padding-bottom: 60px;
     gap: 29px;
     align-items: flex-end;
@@ -60,7 +60,7 @@
 
 @media screen and (max-width: 428px) {
   .search-form {
-    --own-padding-top: 76px;
+    padding-top: 76px;
     padding-bottom: 50px;
     gap: 40px;
     align-items: center;
