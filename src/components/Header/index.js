@@ -12,7 +12,7 @@ export default function Header({ isLoggedIn }) {
     <SectionWithWrapper
       tagName="header"
       wrapperClassName="header"
-      className="header__wrapper section_mobile-margins_m section_no-auto-width"
+      className="header__wrapper section_mobile-margins_m"
     >
       <Logo className="header__logo" />
       {isLoggedIn ? (

@@ -1,6 +1,6 @@
 .promo {
   display: flex;
-  padding: 149px 0 74px;
+  padding-block: 149px 74px;
 }
 
 .promo__text {

@@ -1,35 +1,27 @@
 .section {
-  --default-margin: 30px;
-  max-width: 1140px;
-  width: calc(100% - 2 * var(--default-margin));
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding-inline: 30px;
+  width: 100%;
   margin-inline: auto;
 }
 
 @media screen and (max-width: 1024px) {
-  .section {
-    width: auto;
-    margin-inline: var(--default-margin);
-  }
-
-  .section_no-auto-width {
-    width: inherit;
-  }
-
   .section_tablet-margins_l {
-    margin-inline: 50px;
+    padding-inline: 50px;
   }
 }
 
 @media screen and (max-width: 428px) {
   .section {
-    margin-inline: 10px;
+    padding-inline: 10px;
   }
 
   .section_mobile-margins_m {
-    margin-inline: 14px;
+    padding-inline: 14px;
   }
 
   .section_mobile-margins_l {
-    margin-inline: 18px;
+    padding-inline: 18px;
   }
 }
