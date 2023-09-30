@@ -4,6 +4,6 @@
 
 @media screen and (max-width: 428px) {
   .burger {
-    background-image: url(images/burger_mobile.svg);
+    background-image: url(images/burger-mobile.svg);
   }
 }
