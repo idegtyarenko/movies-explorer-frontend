@@ -20,6 +20,10 @@
   font-size: 13px;
 }
 
+.navigation__link_is-active {
+  font-weight: 500;
+}
+
 .navigation__profile {
   font-size: 13px;
   min-width: 64px;
