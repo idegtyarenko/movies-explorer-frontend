@@ -10,7 +10,7 @@
 
 .link_type_button {
   background-color: inherit;
-  border: inherit;
-  padding: inherit;
+  border: none;
+  padding: initial;
   cursor: pointer;
 }

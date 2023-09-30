@@ -2,4 +2,11 @@
   display: grid;
   gap: 32px 20px;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  padding: 70px 0 30px;
+}
+
+@media screen and (max-width: 428px) {
+  .movie-cards-grid {
+    padding-top: 40px;
+  }
 }
