@@ -4,6 +4,7 @@
   gap: 14px;
   font-size: 11px;
   --animation-length: var(--duration-animation-default);
+  cursor: pointer;
 }
 
 .switch__input {
@@ -16,6 +17,7 @@
   border-radius: 10px;
   background-color: #ebebeb;
   transition: background-color var(--animation-length);
+  cursor: pointer;
 }
 
 .switch__input:checked {
