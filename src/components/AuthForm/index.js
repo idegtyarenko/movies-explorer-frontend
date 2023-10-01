@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logo from "ui/Logo";
-import Link from "ui/Link";
+import FormSubmitButton from "ui/FormSubmitButton";
 
 import Field from "./components/Field";
 import "./AuthForm.css";
@@ -23,9 +23,7 @@ export default function AuthForm({
         {fields.map(Field)}
       </form>
       <div className="auth-form__bottom">
-        <Link className="auth-form__button" form={id} type="submit">
-          {buttonName}
-        </Link>
+        <FormSubmitButton formId={id}>{buttonName}</FormSubmitButton>
         {belowButtonElement}
       </div>
     </div>

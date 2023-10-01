@@ -13,6 +13,8 @@ export default function FormField({
     return;
   }
 
+  const isErrorDisplayed = typeof errorText === "string";
+
   return (
     <div className={className}>
       {label && (
@@ -26,7 +28,7 @@ export default function FormField({
         id={id}
         {...props}
       />
-      <p className={`${className}-error`}>{errorText}</p>
+      {isErrorDisplayed && <p className={`${className}-error`}>{errorText}</p>}
     </div>
   );
 }

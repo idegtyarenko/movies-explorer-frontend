@@ -8,6 +8,10 @@
   color: var(--color-button);
 }
 
+.link_color_warning {
+  color: var(--color-warning);
+}
+
 .link_type_button {
   background-color: inherit;
   border: none;

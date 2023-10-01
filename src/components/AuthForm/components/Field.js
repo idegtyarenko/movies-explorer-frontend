@@ -10,6 +10,7 @@ export default function Field(fieldDescription) {
       className="auth-form__field"
       label={fieldDescription.label}
       type={fieldDescription.type}
+      errorText=""
       {...fieldDescription.attributes}
     />
   );

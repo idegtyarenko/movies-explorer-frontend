@@ -37,20 +37,6 @@
   margin-top: 69px;
 }
 
-.auth-form__button {
-  background-color: var(--color-button);
-  width: 100%;
-  padding-block: 13px 15px;
-  border-radius: 3px;
-  font-size: 14px;
-  line-height: 17px;
-}
-
-.auth-form__button_state_disabled {
-  color: var(--color-text-secondary);
-  background-color: var(--color-background-fields);
-}
-
 @media screen and (max-width: 428px) {
   .auth-form__top {
     align-items: center;
@@ -63,11 +49,5 @@
   .auth-form__bottom {
     margin-bottom: 30px;
     align-self: flex-end;
-  }
-
-  .auth-form__button {
-    padding-top: 15px;
-    font-size: 12px;
-    line-height: 15px;
   }
 }

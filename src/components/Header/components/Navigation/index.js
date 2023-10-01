@@ -1,8 +1,8 @@
-import Link from "ui/Link";
 import IconButton from "ui/IconButton";
 import { joinClassNames } from "utils/utils";
 
 import Section from "./components/Section";
+import Profile from "./components/Profile";
 import "./Navigation.css";
 
 export default function Navigation({ isMenuOpen }) {
@@ -24,9 +24,7 @@ export default function Navigation({ isMenuOpen }) {
         <Section to="/movies">Фильмы</Section>
         <Section to="/saved-movies">Сохранённые фильмы</Section>
       </ul>
-      <Link className="navigation__profile" to="/profile">
-        Аккаунт
-      </Link>
+      <Profile />
     </nav>
   );
 }

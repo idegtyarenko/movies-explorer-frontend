@@ -35,6 +35,10 @@
   background-position: right;
 }
 
+.navigation__profile_is-active {
+  font-weight: 500;
+}
+
 .navigation__close-menu {
   background-image: url("images/cross.svg");
   align-self: flex-end;
