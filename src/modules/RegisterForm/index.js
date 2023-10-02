@@ -1,10 +1,6 @@
 import HintLink from "components/HintLink";
 import AuthForm from "components/AuthForm";
-import {
-  emailField,
-  nameField,
-  passwordField,
-} from "components/AuthForm/utils/constants";
+import { emailField, nameField, passwordField } from "utils/constants";
 
 export default function RegisterForm() {
   const fields = [nameField, emailField, passwordField];

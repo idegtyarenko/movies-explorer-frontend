@@ -1,31 +1,26 @@
+import { nameField, emailField } from "utils/constants";
 import Section from "ui/Section";
-import { FieldWithLabelAndError } from "ui/FormField";
 import FormSubmitButton from "ui/FormSubmitButton";
 import Link from "ui/Link";
 
 import "./ProfileForm.css";
+import Field from "./components/Field";
 
 export default function ProfileForm({ isInEditMode }) {
   const formId = "profile";
+  const fields = [nameField, emailField];
 
   return (
     <Section className="profile-form" aria-label="Профиль пользователя">
       <h1 className="profile-form__title">Привет, Виталий!</h1>
       <form className="profile-form__form" id={formId}>
-        <FieldWithLabelAndError
-          id="user-name"
-          className="profile-form__field"
-          label="Имя"
-          disabled={!isInEditMode}
-          value="Виталий"
-        />
-        <FieldWithLabelAndError
-          id="email"
-          className="profile-form__field"
-          label="Почта"
-          disabled={!isInEditMode}
-          value="pochta@yandex.ru"
-        />
+        {fields.map((fieldDescription) => (
+          <Field
+            key={fieldDescription.id}
+            fieldDescription={fieldDescription}
+            disabled={!isInEditMode}
+          />
+        ))}
       </form>
       <div className="profile-form__bottom">
         {isInEditMode ? (

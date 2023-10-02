@@ -1,6 +1,6 @@
 import HintLink from "components/HintLink";
 import AuthForm from "components/AuthForm";
-import { emailField, passwordField } from "components/AuthForm/utils/constants";
+import { emailField, passwordField } from "utils/constants";
 
 export default function LoginForm() {
   const fields = [emailField, passwordField];
