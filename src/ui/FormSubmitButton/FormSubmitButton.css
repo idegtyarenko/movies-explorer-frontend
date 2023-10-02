@@ -1,5 +1,4 @@
 .form-submit-button {
-  cursor: pointer;
   border: none;
   background-color: var(--color-button);
   color: inherit;

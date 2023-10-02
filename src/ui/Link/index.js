@@ -7,7 +7,7 @@ import ButtonLink from "./components/ButtonLink";
 import "./Link.css";
 
 export default function Link({ className, to, type, form, children }) {
-  const defaultClass = "link link-hover-animation";
+  const defaultClass = "link link-hover-behavior";
   const Component = chooseLinkComponent(to);
 
   function chooseLinkComponent(link) {

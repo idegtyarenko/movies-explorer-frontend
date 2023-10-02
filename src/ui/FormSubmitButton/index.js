@@ -8,7 +8,7 @@ export default function FormSubmitButton({
   disabled,
   children,
 }) {
-  const defaultClass = "form-submit-button link-hover-animation";
+  const defaultClass = "form-submit-button link-hover-behavior";
 
   return (
     <button

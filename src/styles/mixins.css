@@ -8,10 +8,11 @@
   }
 }
 
-.link-hover-animation {
+.link-hover-behavior {
+  cursor: pointer;
   transition: opacity var(--duration-animation-default) ease;
 }
 
-.link-hover-animation:hover {
+.link-hover-behavior:hover {
   opacity: 0.7;
 }

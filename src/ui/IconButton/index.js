@@ -8,7 +8,7 @@ export default function IconButton({
   type = "button",
   ...props
 }) {
-  const defaultClass = "button link-hover-animation";
+  const defaultClass = "button link-hover-behavior";
   if (!ariaLabel) {
     console.error('"ariaLabel" is a required prop for IconButton component.');
     return;
