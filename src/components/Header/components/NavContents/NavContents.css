@@ -1,9 +1,3 @@
-.navigation {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-}
-
 .navigation__sections {
   display: flex;
   align-items: center;
@@ -39,33 +33,7 @@
   font-weight: 500;
 }
 
-.navigation__close-menu {
-  background-image: url("images/cross.svg");
-  align-self: flex-end;
-}
-
 @media screen and (max-width: 768px) {
-  .navigation {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: 0;
-    max-width: 520px;
-    width: 100%;
-    min-height: 100svh;
-    background-color: var(--color-background-primary);
-    padding: 16px 16px 88px;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in;
-  }
-
-  .navigation_is-menu-open {
-    transform: translateX(0);
-    transition: transform 0.5s ease-out;
-  }
-
   .navigation__sections {
     justify-content: flex-start;
     flex-direction: column;
@@ -87,10 +55,6 @@
 }
 
 @media screen and (max-width: 428px) {
-  .navigation {
-    padding-bottom: 44px;
-  }
-
   .navigation__sections {
     gap: 15px;
     padding-top: 82px;

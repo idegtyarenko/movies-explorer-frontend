@@ -3,7 +3,9 @@ import { React, useEffect, useState, useCallback } from "react";
 import { SectionWithWrapper } from "ui/Section";
 import Logo from "ui/Logo";
 
-import Navigation from "./components/Navigation";
+import DesktopNav from "./components/DesktopNav";
+import TouchNav from "./components/TouchNav";
+import NavContents from "./components/NavContents";
 import Burger from "./components/Burger";
 import AuthButtons from "./components/AuthButtons";
 
@@ -30,7 +32,15 @@ export default function Header({ isLoggedIn }) {
       <Logo className="header__logo" />
       {isLoggedIn ? (
         <>
-          <Navigation key={isDesktop} isMenuOpen={false} />
+          {isDesktop ? (
+            <DesktopNav>
+              <NavContents />
+            </DesktopNav>
+          ) : (
+            <TouchNav isMenuOpen={false}>
+              <NavContents />
+            </TouchNav>
+          )}
           <Burger />
         </>
       ) : (
