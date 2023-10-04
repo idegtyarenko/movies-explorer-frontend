@@ -49,6 +49,6 @@
 
 @media screen and (max-width: 428px) {
   .navigation__content {
-    padding-bottom: 44px;
+    padding: 6px 8px 44px;
   }
 }

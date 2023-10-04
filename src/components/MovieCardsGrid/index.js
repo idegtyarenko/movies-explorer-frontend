@@ -19,7 +19,7 @@ export default function MovieCardsGrid({ savedMovies }) {
   const cards = Array(16).fill(exampleCard);
 
   return (
-    <Section className="section_mobile-margins_m">
+    <Section>
       <div className="movie-cards-grid">{cards.map((card) => card)}</div>
     </Section>
   );

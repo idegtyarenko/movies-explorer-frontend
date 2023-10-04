@@ -37,7 +37,7 @@
   .navigation__sections {
     justify-content: flex-start;
     flex-direction: column;
-    gap: 22px;
+    gap: 17px;
     padding-top: 97px;
   }
 
@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 428px) {
   .navigation__sections {
-    gap: 15px;
-    padding-top: 82px;
+    gap: 12px;
+    padding-top: 91px;
   }
 }

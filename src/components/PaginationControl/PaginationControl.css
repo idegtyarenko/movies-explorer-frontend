@@ -14,3 +14,9 @@
   font-size: 12px;
   line-height: 16px;
 }
+
+@media screen and (max-width: 428px) {
+  .pagination-control {
+    padding-inline: 40px;
+  }
+}

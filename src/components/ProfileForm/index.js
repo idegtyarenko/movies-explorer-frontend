@@ -33,7 +33,7 @@ export default function ProfileForm({ isInEditMode }) {
         ) : (
           <>
             <Link className="profile-form__link">Редактировать</Link>
-            <Link className="profile-form__link link_color_warning">
+            <Link className="profile-form__link profile-form__link_type_logout link_color_warning">
               Выйти из аккаунта
             </Link>
           </>

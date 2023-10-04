@@ -2,7 +2,7 @@
   display: grid;
 
   width: 100%;
-  max-width: 410px;
+  max-width: 470px;
   padding-inline: 30px;
   justify-content: stretch;
 
@@ -37,8 +37,12 @@
 }
 
 .profile-form__link {
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.profile-form__link_type_logout {
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
@@ -68,5 +72,10 @@
   .profile-form__bottom {
     margin: 0 0 40px;
     align-self: end;
+  }
+
+  .profile-form__link {
+    font-size: 12px;
+    line-height: 15px;
   }
 }
