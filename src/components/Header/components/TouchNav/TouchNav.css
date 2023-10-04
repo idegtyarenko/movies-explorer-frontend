@@ -6,6 +6,7 @@
   left: 0;
   width: 100vw;
   height: 100svh;
+  pointer-events: none;
 }
 
 .navigation_platform_touch::before {
@@ -18,6 +19,10 @@
   background-color: var(--color-background-overlay);
   opacity: 0;
   transition: opacity 0.5s;
+}
+
+.navigation_is-menu-open {
+  pointer-events: all;
 }
 
 .navigation_is-menu-open::before {
