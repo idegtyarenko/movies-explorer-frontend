@@ -14,6 +14,10 @@ import "./Header.css";
 export default function Header({ isLoggedIn }) {
   const checkIfDesktop = useCallback(() => window.innerWidth > 768, []);
   const [isDesktop, setIsDesktop] = useState(checkIfDesktop());
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(checkIfDesktop());
@@ -37,11 +41,11 @@ export default function Header({ isLoggedIn }) {
               <NavContents />
             </DesktopNav>
           ) : (
-            <TouchNav isMenuOpen={false}>
+            <TouchNav isMenuOpen={isMenuOpen} handleClose={handleMenuToggle}>
               <NavContents />
             </TouchNav>
           )}
-          <Burger />
+          <Burger handleClick={handleMenuToggle} />
         </>
       ) : (
         <AuthButtons />

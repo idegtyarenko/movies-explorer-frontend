@@ -3,7 +3,7 @@ import { joinClassNames } from "utils/utils";
 
 import "./TouchNav.css";
 
-export default function TouchNav({ isMenuOpen, children }) {
+export default function TouchNav({ isMenuOpen, handleClose, children }) {
   return (
     <nav
       className={joinClassNames([
@@ -20,6 +20,7 @@ export default function TouchNav({ isMenuOpen, children }) {
         <IconButton
           className="navigation__close-menu except-desktop"
           ariaLabel="Закрыть меню"
+          onClick={handleClose}
         />
         {children}
       </div>
