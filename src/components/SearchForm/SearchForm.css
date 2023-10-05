@@ -49,6 +49,9 @@
   .search-form {
     padding-top: 66px;
     padding-bottom: 60px;
+  }
+
+  .search-form__form {
     gap: 29px;
     align-items: flex-end;
   }
