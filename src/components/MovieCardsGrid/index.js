@@ -20,7 +20,7 @@ export default function MovieCardsGrid({ savedMovies }) {
 
   return (
     <Section>
-      <div className="movie-cards-grid">{cards.map((card) => card)}</div>
+      <ul className="movie-cards-grid">{cards.map((card) => card)}</ul>
     </Section>
   );
 }
