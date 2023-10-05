@@ -7,7 +7,6 @@ import "./Error404.css";
 export default function Error404() {
   const navigate = useNavigate();
   const handleGoBack = () => {
-    console.log("back");
     navigate(-1);
   };
 
