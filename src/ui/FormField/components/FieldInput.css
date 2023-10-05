@@ -5,7 +5,7 @@
 }
 
 .field-input:focus {
-  outline: none;
+  /* outline: none; */
 }
 
 .field-input::placeholder {
