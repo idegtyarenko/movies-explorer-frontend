@@ -1,11 +1,11 @@
 import { joinClassNames } from "utils/utils";
 
-export default function ButtonLink({ className, type, form, children }) {
+export default function ButtonLink({ className, onClick, children }) {
   return (
     <button
       className={joinClassNames(["link_type_button", className])}
-      type={type || "button"}
-      form={form}
+      type="button"
+      onClick={onClick}
     >
       {children}
     </button>

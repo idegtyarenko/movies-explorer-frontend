@@ -6,7 +6,7 @@ import AnchorLink from "./components/AnchorLink";
 import ButtonLink from "./components/ButtonLink";
 import "./Link.css";
 
-export default function Link({ className, to, type, form, children }) {
+export default function Link({ className, to, onClick, children }) {
   const defaultClass = "link link-hover-behavior";
   const Component = chooseLinkComponent(to);
 
@@ -28,8 +28,7 @@ export default function Link({ className, to, type, form, children }) {
     <Component
       className={joinClassNames([defaultClass, className])}
       to={to}
-      type={type}
-      form={form}
+      onClick={onClick}
     >
       {children}
     </Component>
