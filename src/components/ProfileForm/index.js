@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-import { nameField, emailField } from "utils/constants";
+import { NAME_FIELD, EMAIL_FIELD } from "utils/constants";
 import Section from "ui/Section";
 import FormSubmitButton from "ui/FormSubmitButton";
 import Link from "ui/Link";
@@ -10,7 +10,7 @@ import Field from "./components/Field";
 
 export default function ProfileForm() {
   const formId = "profile";
-  const fields = [nameField, emailField];
+  const fields = [NAME_FIELD, EMAIL_FIELD];
   const [isInEditMode, setIsInEditMode] = useState(false);
   const toggleEditMode = (e) => {
     setIsInEditMode(!isInEditMode);
