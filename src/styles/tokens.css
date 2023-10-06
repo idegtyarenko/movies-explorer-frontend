@@ -1,0 +1,25 @@
+.html {
+  --color-background-primary: #202020;
+  --color-background-secondary: #272727;
+  --color-background-tertiary: #303030;
+  --color-background-promo: #073042;
+  --color-background-fields: #2f2f2f;
+  --color-background-cards: #222;
+  --color-background-overlay: rgba(0, 0, 0, 0.3);
+
+  --color-text-primary: white;
+  --color-text-secondary: #8b8b8b;
+  --color-text-inverted: black;
+  --color-text-primary-translucent: rgba(255, 255, 255, 0.8);
+
+  --color-lines-primary: #dadada;
+  --color-lines-secondary: #424242;
+
+  --color-highlight: #3ddc84;
+  --color-warning: #ee3465;
+  --color-button: #4285f4;
+
+  --duration-animation-default: 0.2s;
+
+  --header-height: 74px;
+}

@@ -1,0 +1,38 @@
+.notification {
+  border-radius: 10px;
+  background-color: var(--color-background-tertiary);
+  padding: 16px 16px 16px 72px;
+}
+
+.notification_type_error {
+  background-image: url("images/error.svg");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+}
+
+.notification_type_info {
+  background-image: url("images/info.svg");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+}
+
+.notification__title {
+  margin: 0 0 8px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.notification__title_type_error {
+  color: var(--color-warning);
+}
+
+.notification__title_type_info {
+  color: var(--color-highlight);
+}
+
+.notification__text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 16px;
+}

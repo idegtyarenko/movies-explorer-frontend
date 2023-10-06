@@ -1,0 +1,27 @@
+.section {
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding-inline: 30px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .section_tablet-margins_l {
+    padding-inline: 50px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .section {
+    padding-inline: 10px;
+  }
+
+  .section_mobile-margins_m {
+    padding-inline: 14px;
+  }
+
+  .section_mobile-margins_l {
+    padding-inline: 18px;
+  }
+}

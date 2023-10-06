@@ -1,0 +1,18 @@
+.except-desktop {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .except-desktop {
+    display: initial;
+  }
+}
+
+.link-hover-behavior {
+  cursor: pointer;
+  transition: opacity var(--duration-animation-default) ease;
+}
+
+.link-hover-behavior:hover {
+  opacity: 0.7;
+}

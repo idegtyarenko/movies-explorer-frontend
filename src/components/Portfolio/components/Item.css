@@ -1,0 +1,32 @@
+.portfolio__item:not(:last-child) {
+  border-bottom: 1px solid var(--color-lines-secondary);
+}
+
+.portfolio__link {
+  padding-block: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -1.2px;
+}
+
+.portfolio__link::after {
+  content: "↗";
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio__link {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}

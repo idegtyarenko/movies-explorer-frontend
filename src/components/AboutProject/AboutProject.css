@@ -1,0 +1,32 @@
+.about-project {
+  --margin: 110px;
+  margin-block: var(--margin);
+  scroll-margin-top: calc(var(--margin) + var(--header-height));
+}
+
+.about-project__factoids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 56px 40px;
+  padding-block: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    --margin: 90px;
+  }
+
+  .about-project__factoids {
+    column-gap: 30px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .about-project {
+    --margin: 70px;
+  }
+
+  .about-project__factoids {
+    padding-block: 60px;
+  }
+}

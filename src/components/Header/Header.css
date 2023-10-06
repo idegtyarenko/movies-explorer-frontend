@@ -1,0 +1,19 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  backdrop-filter: blur(100px) opacity(50%);
+  z-index: 10;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: var(--header-height);
+}
+
+.header__logo {
+  margin-right: 62px;
+}

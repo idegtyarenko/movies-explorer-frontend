@@ -1,0 +1,18 @@
+.field-input {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+}
+
+.field-input:focus {
+  /* outline: none; */
+}
+
+.field-input::placeholder {
+  opacity: 1;
+  color: var(--color-text-secondary);
+}
+
+.field-input_state_invalid {
+  color: var(--color-warning);
+}

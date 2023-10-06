@@ -1,0 +1,17 @@
+.techs__item {
+  background-color: var(--color-background-tertiary);
+  border-radius: 10px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  letter-spacing: -0.56px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__item {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}

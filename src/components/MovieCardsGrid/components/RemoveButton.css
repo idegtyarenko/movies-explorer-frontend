@@ -1,0 +1,5 @@
+.movie-cards-grid__remove-button {
+  width: 16px;
+  height: 16px;
+  background-image: url(images/cross-small.svg);
+}

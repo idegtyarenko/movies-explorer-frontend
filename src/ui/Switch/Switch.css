@@ -1,0 +1,49 @@
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  --animation-length: var(--duration-animation-default);
+  cursor: pointer;
+}
+
+.switch__input {
+  appearance: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #ebebeb;
+  transition: background-color var(--animation-length);
+  cursor: pointer;
+}
+
+.switch__input:checked {
+  background-color: var(--color-highlight);
+}
+
+.switch__input::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  margin-inline: 2px;
+  background-color: #f5f5f5;
+  transition:
+    background-color var(--animation-length),
+    transform var(--animation-length);
+}
+
+.switch__input:checked::after {
+  background-color: var(--color-text-primary);
+  transform: translateX(16px);
+}
+
+@media screen and (max-width: 428px) {
+  .switch {
+    font-size: 11px;
+  }
+}

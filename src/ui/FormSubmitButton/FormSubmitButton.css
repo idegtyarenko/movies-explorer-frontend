@@ -1,0 +1,23 @@
+.form-submit-button {
+  border: none;
+  background-color: var(--color-button);
+  color: inherit;
+  width: 100%;
+  padding: 13px 0 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.form-submit-button_state_disabled {
+  color: var(--color-text-secondary);
+  background-color: var(--color-background-fields);
+}
+
+@media screen and (max-width: 428px) {
+  .form-submit-button {
+    padding-top: 15px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
