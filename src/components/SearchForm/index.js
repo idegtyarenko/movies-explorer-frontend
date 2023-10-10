@@ -1,4 +1,5 @@
 import useValidation from "hooks/useValidation";
+import { useDisplayNotification } from "modules/ContentWithNotifications";
 import Section from "ui/Section";
 import FormField from "ui/FormField";
 import Switch from "ui/Switch";
@@ -11,15 +12,24 @@ export default function SearchForm({ onSubmit }) {
     "query-text": "",
     "short-filter": false,
   });
+  const displayNotification = useDisplayNotification();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(values);
+    if (values["query-text"]) {
+      onSubmit(values);
+    } else {
+      displayNotification({
+        type: "error",
+        title: "Нужно ввести ключевое слово",
+        text: "Чтобы что-то найти, надо что-то искать.",
+      });
+    }
   };
 
   return (
     <Section className="search-form section_mobile-margins_m">
-      <form className="search-form__form" onSubmit={handleSubmit}>
+      <form className="search-form__form" onSubmit={handleSubmit} noValidate>
         <div className="search-form__field">
           <FormField
             name="query-text"
@@ -28,6 +38,7 @@ export default function SearchForm({ onSubmit }) {
             placeholder="Фильм"
             onChange={handleChange}
             value={values["query-text"]}
+            required
           />
           <IconButton
             className="search-form__button"
