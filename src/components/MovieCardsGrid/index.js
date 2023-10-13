@@ -1,26 +1,20 @@
-import Card from "ui/Card";
 import Section from "ui/Section";
 import LikeButton from "ui/LikeButton";
-import poster from "images/poster-example.webp";
 
-import RemoveButton from "./components/RemoveButton";
 import "./MovieCardsGrid.css";
+import RemoveButton from "./components/RemoveButton";
+import MovieCard from "./components/MovieCard";
 
-export default function MovieCardsGrid({ savedMovies }) {
-  const exampleCard = (
-    <Card
-      image={poster}
-      name="33 слова о дизайне"
-      altText="Обложка фильма"
-      label="1ч42м"
-      button={savedMovies ? <RemoveButton /> : <LikeButton />}
-    />
-  );
-  const cards = Array(16).fill(exampleCard);
+export default function MovieCardsGrid({ isSavedMovies, movies }) {
+  const button = isSavedMovies ? <RemoveButton /> : <LikeButton />;
 
   return (
     <Section>
-      <ul className="movie-cards-grid">{cards.map((card) => card)}</ul>
+      <ul className="movie-cards-grid">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} button={button} />
+        ))}
+      </ul>
     </Section>
   );
 }
