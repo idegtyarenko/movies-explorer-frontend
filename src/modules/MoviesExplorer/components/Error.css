@@ -1,0 +1,26 @@
+.movies-explorer-error {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding-block: 70px 30px;
+  text-align: center;
+}
+
+.movies-explorer-error__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.movies-explorer-error__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media screen and (max-width: 428px) {
+  .movies-explorer-error {
+    padding-top: 40px;
+  }
+}
