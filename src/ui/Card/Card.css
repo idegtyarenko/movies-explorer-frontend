@@ -1,4 +1,8 @@
 .card {
+  list-style: none;
+}
+
+.card__link {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr auto;
