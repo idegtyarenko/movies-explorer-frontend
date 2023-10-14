@@ -35,5 +35,5 @@ export default function useSearchResult(query, displayNotification) {
     setResult(allMovies.map(extractMovieData));
   }, [query, displayDownloadError, allMovies, extractMovieData]);
 
-  return { result, isLoaded: !allMovies.length };
+  return { result, isLoading: !allMovies.length };
 }
