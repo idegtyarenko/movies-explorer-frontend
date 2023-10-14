@@ -1,7 +1,7 @@
 .movie-cards-grid {
   display: grid;
   gap: 32px 20px;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   padding: 70px 0 30px;
 }
 

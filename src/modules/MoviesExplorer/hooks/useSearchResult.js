@@ -17,6 +17,26 @@ export default function useSearchResult(query, displayNotification) {
     displayNotification(notification);
   }, [displayNotification]);
 
+  const filterMoviesByName = useCallback(
+    (movies, name) =>
+      movies.filter(
+        ({ nameRU, nameEN }) =>
+          nameRU.toLowerCase().includes(name.toLowerCase()) ||
+          nameEN.toLowerCase().includes(name.toLowerCase()),
+      ),
+    [],
+  );
+
+  const filterMovies = useCallback(
+    (movies) => {
+      console.log("filtering movies by query: " + query.text);
+      const text = query["query-text"];
+      const filteredByName = text ? filterMoviesByName(movies, text) : movies;
+      return filteredByName;
+    },
+    [query, filterMoviesByName],
+  );
+
   const extractMovieData = useCallback((rawMovie) => {
     const { id, image, nameRU, duration, trailerLink } = rawMovie;
     return {
@@ -32,8 +52,10 @@ export default function useSearchResult(query, displayNotification) {
     if (!allMovies.length) {
       fetchMovies().then(setAllMovies).catch(displayDownloadError);
     }
-    setResult(allMovies.map(extractMovieData));
-  }, [query, displayDownloadError, allMovies, extractMovieData]);
+    const moviesFiltered = filterMovies(allMovies);
+    const extractedData = moviesFiltered.map(extractMovieData);
+    setResult(extractedData);
+  }, [query, displayDownloadError, allMovies, extractMovieData, filterMovies]);
 
   return { result, isLoading: !allMovies.length };
 }
