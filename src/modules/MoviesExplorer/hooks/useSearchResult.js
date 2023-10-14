@@ -7,6 +7,8 @@ import fetchMovies from "../utils/moviesApi";
 export default function useSearchResult(query, displayNotification) {
   const [allMovies, setAllMovies] = useState([]);
   const [result, setResult] = useState([]);
+  const text = query["query-text"];
+  const isShortFilterOn = query["short-filter"];
 
   const displayDownloadError = useCallback(() => {
     const notification = {
@@ -17,24 +19,36 @@ export default function useSearchResult(query, displayNotification) {
     displayNotification(notification);
   }, [displayNotification]);
 
-  const filterMoviesByName = useCallback(
-    (movies, name) =>
-      movies.filter(
+  const filterMoviesByName = useCallback((movies, name) => {
+    if (name) {
+      return movies.filter(
         ({ nameRU, nameEN }) =>
           nameRU.toLowerCase().includes(name.toLowerCase()) ||
           nameEN.toLowerCase().includes(name.toLowerCase()),
-      ),
-    [],
-  );
+      );
+    } else {
+      return movies;
+    }
+  }, []);
+
+  const filterMoviesByLength = useCallback((movies, isFilterOn) => {
+    if (isFilterOn) {
+      return movies.filter(({ duration }) => duration <= 40);
+    } else {
+      return movies;
+    }
+  }, []);
 
   const filterMovies = useCallback(
     (movies) => {
-      console.log("filtering movies by query: " + query.text);
-      const text = query["query-text"];
-      const filteredByName = text ? filterMoviesByName(movies, text) : movies;
-      return filteredByName;
+      const filteredByName = filterMoviesByName(movies, text);
+      const filteredByLength = filterMoviesByLength(
+        filteredByName,
+        isShortFilterOn,
+      );
+      return filteredByLength;
     },
-    [query, filterMoviesByName],
+    [text, isShortFilterOn, filterMoviesByName, filterMoviesByLength],
   );
 
   const extractMovieData = useCallback((rawMovie) => {
@@ -49,13 +63,13 @@ export default function useSearchResult(query, displayNotification) {
   }, []);
 
   useEffect(() => {
-    if (!allMovies.length) {
+    if (text && !allMovies.length) {
       fetchMovies().then(setAllMovies).catch(displayDownloadError);
     }
     const moviesFiltered = filterMovies(allMovies);
     const extractedData = moviesFiltered.map(extractMovieData);
     setResult(extractedData);
-  }, [query, displayDownloadError, allMovies, extractMovieData, filterMovies]);
+  }, [text, displayDownloadError, allMovies, extractMovieData, filterMovies]);
 
   return { result, isLoading: !allMovies.length };
 }

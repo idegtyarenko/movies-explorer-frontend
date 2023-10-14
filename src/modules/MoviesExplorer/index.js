@@ -24,7 +24,7 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
   return (
     <>
       <SearchForm onSubmit={handleSubmit} />
-      {isLoading && <Preloader />}
+      {query["query-text"] && isLoading && <Preloader />}
       <MovieCardsGrid movies={movies} isSavedMovies={isSavedMovies} />
       <PaginationControl />
     </>
