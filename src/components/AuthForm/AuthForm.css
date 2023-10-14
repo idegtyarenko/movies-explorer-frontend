@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   align-self: end;
+  align-items: flex-start;
 }
 
 .auth-form__title {
