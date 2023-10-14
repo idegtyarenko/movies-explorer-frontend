@@ -1,5 +1,10 @@
 import { FieldDescription } from "ui/FormField";
 
+export const MAIN_API_ROOT =
+  process.env.NODE_ENV === "production"
+    ? "https://api.smotrim.nomoreparties.co"
+    : "http://localhost:3000";
+
 export const NAME_FIELD = new FieldDescription("user-name", "Имя", "text", {
   required: true,
   minLength: 2,
