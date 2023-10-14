@@ -4,28 +4,31 @@ import MovieCardsGrid from "components/MovieCardsGrid";
 import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
-import { useDisplayNotification } from "modules/ContentWithNotifications";
 
-import useSearchResult from "./hooks/useSearchResult";
+import useMoviesData from "./hooks/useMoviesData";
+import { filterMovies } from "./utils/utils";
 
 export default function MoviesExplorer({ isSavedMovies = false }) {
-  const [query, setQuery] = useState({});
-  const displayNotification = useDisplayNotification();
-
-  const { result: movies, isLoading } = useSearchResult(
-    query,
-    displayNotification,
-  );
+  const [query, setQuery] = useState({ searchCount: 0 });
+  const { movies, error, isLoading } = useMoviesData(query);
 
   const handleSubmit = (formValues) => {
-    setQuery(formValues);
+    setQuery({
+      ...formValues,
+      searchCount: query.searchCount + 1, // Changes query to restart downloading on retry after error
+    });
   };
+
+  const result = filterMovies(movies, query);
 
   return (
     <>
       <SearchForm onSubmit={handleSubmit} />
-      {query["query-text"] && isLoading && <Preloader />}
-      <MovieCardsGrid movies={movies} isSavedMovies={isSavedMovies} />
+      {isLoading && <Preloader />}
+      {error && <p>Ошибка загрузки</p>}
+      {!!movies.length && (
+        <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
+      )}
       <PaginationControl />
     </>
   );

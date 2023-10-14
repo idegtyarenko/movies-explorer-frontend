@@ -1,14 +1,14 @@
 import Card from "ui/Card";
 
 export default function MovieCard({ movie, button }) {
-  const { imageUrl, name, duration, trailerLink } = movie;
+  const { imageUrl, name, durationString, trailerLink } = movie;
 
   return (
     <Card
       image={imageUrl}
       name={name}
       altText="Обложка фильма"
-      label={duration}
+      label={durationString}
       trailerLink={trailerLink}
       button={button}
     />
