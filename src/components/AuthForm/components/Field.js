@@ -2,15 +2,17 @@ import { FieldWithLabelAndError } from "ui/FormField";
 
 import "./Field.css";
 
-export default function Field(fieldDescription) {
+export default function Field({ fieldDescription, value, error, onChange }) {
+  const { id, label, type } = fieldDescription;
   return (
     <FieldWithLabelAndError
-      key={fieldDescription.id}
-      id={fieldDescription.id}
+      id={id}
       className="auth-form__field"
-      label={fieldDescription.label}
-      type={fieldDescription.type}
-      errorText=""
+      label={label}
+      type={type}
+      errorText={error}
+      value={value}
+      onChange={onChange}
       {...fieldDescription.attributes}
     />
   );
