@@ -27,6 +27,11 @@ export default function SearchForm({ onSubmit }) {
     }
   };
 
+  const handleSwitchChange = (e) => {
+    handleChange(e);
+    onSubmit({ ...values, "short-filter": !values["short-filter"] });
+  };
+
   return (
     <Section className="search-form section_mobile-margins_m">
       <form className="search-form__form" onSubmit={handleSubmit} noValidate>
@@ -50,7 +55,7 @@ export default function SearchForm({ onSubmit }) {
           className="search-form__switch"
           name="short-filter"
           label="Короткометражки"
-          onChange={handleChange}
+          onChange={handleSwitchChange}
           checked={values["short-filter"]}
         />
       </form>
