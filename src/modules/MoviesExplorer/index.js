@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-import MovieCardsGrid from "components/MovieCardsGrid";
 import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
 
 import useMoviesData from "./hooks/useMoviesData";
 import { filterMovies, getStatus } from "./utils/utils";
+import MovieCardsGrid from "./components/MovieCardsGrid";
 import Error from "./components/Error";
 
 export { MoviesProvider } from "./store";
 
 export default function MoviesExplorer({ isSavedMovies = false }) {
-  const [query, setQuery] = useState({ searchCount: 0 });
+  const [query, setQuery] = useState({ "query-text": "", searchCount: 0 });
   const { movies, error, isLoading } = useMoviesData(query);
   const result = filterMovies(movies, query);
   const [status, Status] = getStatus(query, isLoading, result);
