@@ -49,6 +49,17 @@ export function signUp({ email, password, name }) {
   });
 }
 
+export function signIn({ email, password }) {
+  return fetchResource({
+    endpoint: "/signin",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    bodyObject: { email, password },
+  });
+}
+
 export function signOut() {
   return fetchResource({
     endpoint: "/signout",

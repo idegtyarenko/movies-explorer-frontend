@@ -15,7 +15,7 @@ export default function useCheckAuth() {
       dispatch({ type: "set", user });
       return user;
     } catch (err) {
-      return Promise.reject(err.message);
+      throw new Error(err.message);
     }
   }
 
