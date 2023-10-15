@@ -1,6 +1,6 @@
 import { SectionWithWrapper } from "ui/Section";
 import Link from "ui/Link";
-import illustration from "images/globe.svg";
+import illustration from "images/globe.webp";
 
 import "./Promo.css";
 
