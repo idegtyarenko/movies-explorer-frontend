@@ -36,6 +36,16 @@ function addFavoriteStatuses(movies, favorites) {
   });
 }
 
+function updateFavoriteStatus(movies, movieId, isFavorite) {
+  return movies.map((movie) => {
+    if (movie.id !== movieId) {
+      return movie;
+    } else {
+      return { ...movie, isFavorite };
+    }
+  });
+}
+
 function moviesReducer(movies = [], action) {
   switch (action.type) {
     case "set": {
@@ -50,11 +60,12 @@ function moviesReducer(movies = [], action) {
         list: adaptedMoviesWithFavoriteStatus,
       };
     }
-    case "like": {
-      return movies;
-    }
-    case "unlike": {
-      return movies;
+    case "updateFavoriteStatus": {
+      const { movieId, isFavorite } = action;
+      return {
+        ...movies,
+        list: updateFavoriteStatus(movies.list, movieId, isFavorite),
+      };
     }
     default: {
       throw Error("Unknown action: " + action.type);
