@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
+import { useMovies, useMoviesDispatch } from "../store";
 import fetchMovies from "../utils/moviesApi";
-import { adaptMovie } from "../utils/utils";
 
 export default function useMoviesData(query) {
-  const [movies, setMovies] = useState([]);
+  const movies = useMovies();
+  const dispatch = useMoviesDispatch();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,13 +13,15 @@ export default function useMoviesData(query) {
     if (!query["query-text"]) {
       return;
     }
-    if (!movies.length) {
+    if (!movies.list.length) {
       setError(null);
       setIsLoading(true);
       fetchMovies()
         .then((res) => {
-          const adaptedMovies = res.map(adaptMovie);
-          setMovies(adaptedMovies);
+          dispatch({
+            type: "set",
+            data: res,
+          });
           setIsLoading(false);
         })
         .catch((err) => {
@@ -26,7 +29,7 @@ export default function useMoviesData(query) {
           setIsLoading(false);
         });
     }
-  }, [query, movies.length]);
+  }, [query, movies.list.length, dispatch]);
 
-  return { movies, error, isLoading };
+  return { movies: movies.list, error, isLoading };
 }

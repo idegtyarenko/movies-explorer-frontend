@@ -9,6 +9,8 @@ import useMoviesData from "./hooks/useMoviesData";
 import { filterMovies, getStatus } from "./utils/utils";
 import Error from "./components/Error";
 
+export { MoviesProvider } from "./store";
+
 export default function MoviesExplorer({ isSavedMovies = false }) {
   const [query, setQuery] = useState({ searchCount: 0 });
   const { movies, error, isLoading } = useMoviesData(query);
