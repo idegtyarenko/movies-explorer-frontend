@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { CurrentUserProvider } from "store/user";
+import { MoviesProvider } from "modules/MoviesExplorer";
 import Main from "pages/Main";
 import ProtectedRouteElement from "components/ProtectedRouteElement";
 import Movies from "pages/Movies";
@@ -17,26 +18,28 @@ const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <React.StrictMode>
     <CurrentUserProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route
-            path="/movies"
-            element={<ProtectedRouteElement element={Movies} />}
-          />
-          <Route
-            path="/saved-movies"
-            element={<ProtectedRouteElement element={SavedMovies} />}
-          />
-          <Route
-            path="/profile"
-            element={<ProtectedRouteElement element={Profile} />}
-          />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <MoviesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route
+              path="/movies"
+              element={<ProtectedRouteElement element={Movies} />}
+            />
+            <Route
+              path="/saved-movies"
+              element={<ProtectedRouteElement element={SavedMovies} />}
+            />
+            <Route
+              path="/profile"
+              element={<ProtectedRouteElement element={Profile} />}
+            />
+            <Route path="/signin" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </MoviesProvider>
     </CurrentUserProvider>
   </React.StrictMode>,
 );
