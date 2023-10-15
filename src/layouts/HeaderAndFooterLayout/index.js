@@ -6,7 +6,7 @@ import Footer from "components/Footer";
 export default function HeaderAndFooterLayout({ isLoggedIn, children }) {
   return (
     <ContentWithNotifications>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header />
       <Main>{children}</Main>
       <Footer />
     </ContentWithNotifications>

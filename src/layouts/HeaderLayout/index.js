@@ -5,7 +5,7 @@ import Main from "ui/Main";
 export default function HeaderLayout({ isLoggedIn, children }) {
   return (
     <ContentWithNotifications>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header />
       <Main>{children}</Main>
     </ContentWithNotifications>
   );
