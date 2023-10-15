@@ -48,3 +48,7 @@ export function signUp({ email, password, name }) {
     bodyObject: { email, password, name },
   });
 }
+
+export function getUser() {
+  return fetchResource({ endpoint: "/users/me" });
+}
