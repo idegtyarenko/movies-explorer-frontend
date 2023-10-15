@@ -1,24 +1,9 @@
-import { MOVIES_API_ROOT } from "./constants";
-
 export function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
   const minutes = duration % 60;
   const hoursString = hours ? `${hours}ч` : "";
   const minutesString = `${minutes}м`;
   return hoursString + minutesString;
-}
-
-export function adaptMovie(rawMovie) {
-  const { id, image, nameRU, nameEN, duration, trailerLink } = rawMovie;
-  return {
-    id,
-    imageUrl: MOVIES_API_ROOT + image.url,
-    name: nameRU,
-    nameEN,
-    duration,
-    durationString: formatDuration(duration),
-    trailerLink,
-  };
 }
 
 export const filterMovies = (movies, query) =>

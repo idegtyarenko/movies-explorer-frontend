@@ -32,12 +32,12 @@ export default function useMoviesData(query) {
     if (!query["query-text"]) {
       return;
     }
-    if (!movies.list.length) {
+    if (!movies.allMovies.length) {
       setError(null);
       setIsLoading(true);
       fetchData();
     }
-  }, [query, movies.list.length, fetchData]);
+  }, [query, movies.allMovies.length, fetchData]);
 
-  return { movies: movies.list, error, isLoading };
+  return { movies: movies.allMovies, error, isLoading };
 }

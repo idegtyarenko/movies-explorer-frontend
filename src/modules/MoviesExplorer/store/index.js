@@ -1,4 +1,5 @@
-import { adaptMovie } from "../utils/utils";
+import { MOVIES_API_ROOT } from "../utils/constants";
+import { formatDuration } from "../utils/utils";
 
 const { createContext, useReducer, useContext } = require("react");
 
@@ -7,8 +8,8 @@ const MoviesDispatchContext = createContext(null);
 
 export function MoviesProvider({ children }) {
   const initialState = {
-    rawData: [],
-    list: [],
+    allMovies: [],
+    favorites: [],
   };
   const [movies, dispatch] = useReducer(moviesReducer, initialState);
 
@@ -29,42 +30,40 @@ export function useMoviesDispatch() {
   return useContext(MoviesDispatchContext);
 }
 
-function addFavoriteStatuses(movies, favorites) {
-  const favoritesIds = favorites.map((movie) => movie.movieId);
-  return movies.map((movie) => {
-    return { ...movie, isFavorite: favoritesIds.includes(movie.id) };
-  });
-}
-
-function updateFavoriteStatus(movies, movieId, isFavorite) {
-  return movies.map((movie) => {
-    if (movie.id !== movieId) {
-      return movie;
-    } else {
-      return { ...movie, isFavorite };
-    }
-  });
+function adaptMovie(rawMovie) {
+  const { id, image, nameRU, nameEN, duration, trailerLink } = rawMovie;
+  return {
+    id,
+    imageUrl: MOVIES_API_ROOT + image.url,
+    name: nameRU,
+    nameEN,
+    duration,
+    durationString: formatDuration(duration),
+    trailerLink,
+  };
 }
 
 function moviesReducer(movies = [], action) {
   switch (action.type) {
     case "set": {
       const { allMovies, favorites } = action;
-      const adaptedMovies = allMovies.map(adaptMovie);
-      const adaptedMoviesWithFavoriteStatus = addFavoriteStatuses(
-        adaptedMovies,
-        favorites,
-      );
       return {
-        rawData: allMovies,
-        list: adaptedMoviesWithFavoriteStatus,
+        allMovies: allMovies.map(adaptMovie),
+        favorites: favorites.map((movie) => movie.movieId),
       };
     }
-    case "updateFavoriteStatus": {
-      const { movieId, isFavorite } = action;
+    case "addToFavorites": {
+      const { movieId } = action;
       return {
         ...movies,
-        list: updateFavoriteStatus(movies.list, movieId, isFavorite),
+        favorites: [...movies.favorites, movieId],
+      };
+    }
+    case "removeFromFavorites": {
+      const { movieId } = action;
+      return {
+        ...movies,
+        favorites: movies.favorites.filter((id) => id !== movieId),
       };
     }
     default: {
