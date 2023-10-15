@@ -31,3 +31,23 @@ export const filterMovies = (movies, query) =>
     const matchesDuration = !isShort || movie.duration <= 40;
     return matchesText && matchesDuration;
   });
+
+const Status = {
+  AWAITING: "awaiting",
+  LOADING: "loading",
+  FOUND: "found",
+  ERROR: "error",
+};
+
+export const getStatus = (query, isLoading, result) => {
+  return [
+    !query["query-text"]
+      ? Status.AWAITING
+      : isLoading
+      ? Status.LOADING
+      : !!result.length
+      ? Status.FOUND
+      : Status.ERROR,
+    Status,
+  ];
+};
