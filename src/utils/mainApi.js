@@ -1,46 +1,9 @@
+import { fetchResource } from "./utils";
 import { MAIN_API_ROOT } from "./constants";
-import { CONNECTION_ERROR_MESSAGE } from "./strings";
-
-const handleResponse = (res) =>
-  res.json().then((body) => {
-    const { ok } = res;
-    if (ok) {
-      return { ok, body };
-    }
-    return Promise.reject({
-      ok,
-      status: res.status,
-      message: body.message,
-    });
-  });
-
-const handleNetworkError = (err) =>
-  Promise.reject({
-    ok: false,
-    status: 0,
-    message: CONNECTION_ERROR_MESSAGE,
-  });
-
-async function fetchResource({ endpoint, method, headers, bodyObject }) {
-  const path = MAIN_API_ROOT + endpoint;
-  const settings = {
-    method,
-    headers,
-    credentials: "include",
-    body: JSON.stringify(bodyObject),
-  };
-
-  try {
-    const res = await fetch(path, settings);
-    return handleResponse(res);
-  } catch (err) {
-    return handleNetworkError(err);
-  }
-}
 
 export function signUp({ email, password, name }) {
   return fetchResource({
-    endpoint: "/signup",
+    endpoint: MAIN_API_ROOT + "/signup",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +14,7 @@ export function signUp({ email, password, name }) {
 
 export function signIn({ email, password }) {
   return fetchResource({
-    endpoint: "/signin",
+    endpoint: MAIN_API_ROOT + "/signin",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -62,11 +25,33 @@ export function signIn({ email, password }) {
 
 export function signOut() {
   return fetchResource({
-    endpoint: "/signout",
+    endpoint: MAIN_API_ROOT + "/signout",
     method: "POST",
   });
 }
 
 export function getUser() {
-  return fetchResource({ endpoint: "/users/me" });
+  return fetchResource({ endpoint: MAIN_API_ROOT + "/users/me" });
+}
+
+export function getFavorites() {
+  return fetchResource({ endpoint: MAIN_API_ROOT + "/movies" });
+}
+
+export function addFavorite(movieData) {
+  return fetchResource({
+    endpoint: MAIN_API_ROOT + "/movies",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    bodyObject: movieData,
+  });
+}
+
+export function removeFavorite(movieId) {
+  return fetchResource({
+    endpoint: MAIN_API_ROOT + `/movies/${movieId}`,
+    method: "DELETE",
+  });
 }

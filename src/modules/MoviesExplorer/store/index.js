@@ -29,12 +29,26 @@ export function useMoviesDispatch() {
   return useContext(MoviesDispatchContext);
 }
 
+function addFavoriteStatuses(movies, favorites) {
+  const favoritesIds = favorites.map((movie) => movie.movieId);
+  return movies.map((movie) => {
+    return { ...movie, isFavorite: favoritesIds.includes(movie.id) };
+  });
+}
+
 function moviesReducer(movies = [], action) {
   switch (action.type) {
     case "set": {
-      const { data: rawData } = action;
-      const list = rawData.map(adaptMovie);
-      return { rawData, list };
+      const { allMovies, favorites } = action;
+      const adaptedMovies = allMovies.map(adaptMovie);
+      const adaptedMoviesWithFavoriteStatus = addFavoriteStatuses(
+        adaptedMovies,
+        favorites,
+      );
+      return {
+        rawData: allMovies,
+        list: adaptedMoviesWithFavoriteStatus,
+      };
     }
     case "like": {
       return movies;
