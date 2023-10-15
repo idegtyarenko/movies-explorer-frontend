@@ -6,15 +6,18 @@ import FormSubmitButton from "ui/FormSubmitButton";
 import Link from "ui/Link";
 
 import "./ProfileForm.css";
+import useHandleLogout from "./hooks/useHandleLogout";
 import Field from "./components/Field";
 
 export default function ProfileForm() {
   const formId = "profile";
   const fields = [NAME_FIELD, EMAIL_FIELD];
   const [isInEditMode, setIsInEditMode] = useState(false);
-  const toggleEditMode = (e) => {
+  const handleLogout = useHandleLogout();
+
+  function toggleEditMode(e) {
     setIsInEditMode(!isInEditMode);
-  };
+  }
 
   return (
     <Section className="profile-form" aria-label="Профиль пользователя">
@@ -43,7 +46,7 @@ export default function ProfileForm() {
             </Link>
             <Link
               className="profile-form__link profile-form__link_type_logout link_color_warning"
-              to="/"
+              onClick={handleLogout}
             >
               Выйти из аккаунта
             </Link>
