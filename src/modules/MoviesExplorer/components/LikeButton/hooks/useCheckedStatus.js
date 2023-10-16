@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import { useDisplayNotification } from "modules/ContentWithNotifications";
 import { addFavorite, removeFavorite } from "utils/mainApi";
 
 import { useMoviesData, useMoviesDataDispatch } from "../../../store";
@@ -7,6 +8,7 @@ import { useMoviesData, useMoviesDataDispatch } from "../../../store";
 export default function useFavoriteStatus(movieId) {
   const { favorites, movies } = useMoviesData();
   const dispatch = useMoviesDataDispatch();
+  const displayNotification = useDisplayNotification();
   const [_id, set_id] = useState(favorites[movieId]); // Represents if movie is in favorites on the back end
   const [isChecked, setisChecked] = useState(!!_id); // Represents checkbox status
 
@@ -25,11 +27,11 @@ export default function useFavoriteStatus(movieId) {
   async function handleChange(e) {
     e.preventDefault();
 
-    const previousisChecked = isChecked;
-    setisChecked(!previousisChecked); // Switch checkbox optimistically
+    const previousIsChecked = isChecked;
+    setisChecked(!previousIsChecked); // Switch checkbox optimistically
 
     try {
-      if (previousisChecked) {
+      if (previousIsChecked) {
         await removeFavorite(_id);
         set_id(null);
       } else {
@@ -39,7 +41,14 @@ export default function useFavoriteStatus(movieId) {
         set_id(response.body._id);
       }
     } catch (err) {
-      setisChecked(previousisChecked); // Return to previous checkbox state
+      displayNotification({
+        type: "error",
+        title: `Не удалось ${
+          previousIsChecked ? "удалить из любимых" : "добавить в любимые"
+        }`,
+        text: err.message,
+      });
+      setisChecked(previousIsChecked); // Return to previous checkbox state
     }
   }
 
