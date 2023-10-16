@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 import { addFavorite, removeFavorite } from "utils/mainApi";
 
-import { useMovies, useMoviesDispatch } from "../../../store";
+import { useMoviesData, useMoviesDataDispatch } from "../../../store";
 
 export default function useFavoriteStatus(movieId) {
-  const { favorites, allMovies } = useMovies();
-  const dispatch = useMoviesDispatch();
+  const { favorites, movies } = useMoviesData();
+  const dispatch = useMoviesDataDispatch();
   const [_id, set_id] = useState(favorites[movieId]); // Represents if movie is in favorites on the back end
   const [isChecked, setisChecked] = useState(!!_id); // Represents checkbox status
 
@@ -34,7 +34,7 @@ export default function useFavoriteStatus(movieId) {
         set_id(null);
       } else {
         const response = await addFavorite(
-          allMovies.find((movie) => movie.movieId === movieId),
+          movies.find((movie) => movie.movieId === movieId),
         );
         set_id(response.body._id);
       }

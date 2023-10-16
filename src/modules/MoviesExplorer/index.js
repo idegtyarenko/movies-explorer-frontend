@@ -4,18 +4,17 @@ import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
 
-import useMoviesData from "./hooks/useMoviesData";
-import { filterMovies, getStatus } from "./utils/utils";
+import useMovies from "./hooks/useMovies";
+import { filterMovies } from "./utils/utils";
 import MovieCardsGrid from "./components/MovieCardsGrid";
 import Error from "./components/Error";
 
-export { MoviesProvider } from "./store";
+export { MoviesDataProvider } from "./store";
 
 export default function MoviesExplorer({ isSavedMovies = false }) {
   const [query, setQuery] = useState({ "query-text": "", searchCount: 0 });
-  const { movies, error, isLoading } = useMoviesData(query);
-  const result = filterMovies(movies, query);
-  const [status, Status] = getStatus(query, isLoading, result);
+  const { moviesData, error, isLoading } = useMovies(query, isSavedMovies);
+  const result = filterMovies(moviesData, query, isSavedMovies);
 
   const handleSubmit = (formValues) => {
     setQuery({
@@ -27,11 +26,11 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
   return (
     <>
       <SearchForm onSubmit={handleSubmit} />
-      {status === Status.LOADING && <Preloader />}
-      {status === Status.FOUND && (
+      {isLoading && <Preloader />}
+      {result && (
         <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
       )}
-      {status === Status.ERROR && <Error error={error} />}
+      {error && <Error error={error} />}
       <PaginationControl />
     </>
   );

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { CurrentUserProvider } from "store/user";
-import { MoviesProvider } from "modules/MoviesExplorer";
+import { MoviesDataProvider } from "modules/MoviesExplorer";
 import Main from "pages/Main";
 import ProtectedRouteElement from "components/ProtectedRouteElement";
 import Movies from "pages/Movies";
@@ -18,7 +18,7 @@ const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <React.StrictMode>
     <CurrentUserProvider>
-      <MoviesProvider>
+      <MoviesDataProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
@@ -39,7 +39,7 @@ root.render(
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
-      </MoviesProvider>
+      </MoviesDataProvider>
     </CurrentUserProvider>
   </React.StrictMode>,
 );

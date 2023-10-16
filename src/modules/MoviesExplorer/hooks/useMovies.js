@@ -2,12 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 
 import { getFavorites } from "utils/mainApi";
 
-import { useMovies, useMoviesDispatch } from "../store";
+import { useMoviesData, useMoviesDataDispatch } from "../store";
 import fetchMovies from "../utils/moviesApi";
 
-export default function useMoviesData(query) {
-  const movies = useMovies();
-  const dispatch = useMoviesDispatch();
+export default function useMovies(query, isSavedMovies) {
+  const moviesData = useMoviesData();
+  const dispatch = useMoviesDataDispatch();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,12 +32,12 @@ export default function useMoviesData(query) {
     if (!query["query-text"]) {
       return;
     }
-    if (!movies.allMovies.length) {
+    if (!moviesData.movies.length) {
       setError(null);
       setIsLoading(true);
       fetchData();
     }
-  }, [query, movies.allMovies.length, fetchData]);
+  }, [query, moviesData.movies.length, fetchData]);
 
-  return { movies: movies.allMovies, error, isLoading };
+  return { moviesData, error, isLoading };
 }

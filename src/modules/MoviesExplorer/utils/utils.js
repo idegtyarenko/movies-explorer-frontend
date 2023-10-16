@@ -6,33 +6,19 @@ export function formatDuration(duration) {
   return hoursString + minutesString;
 }
 
-export const filterMovies = (movies, query) =>
-  movies.filter((movie) => {
+export const filterMovies = (moviesData, query, isSavedMovies) =>
+  moviesData.movies.filter((movie) => {
     const text = query["query-text"];
     const isShort = query["short-filter"];
     const matchesText =
       movie.nameRU.toLowerCase().includes(text.toLowerCase()) ||
-      movie.nameEN.toLowerCase().includes(text.toLowerCase());
+      movie.nameEN.toLowerCase().includes(text.toLowerCase()) ||
+      (isSavedMovies && !text);
     const matchesDuration = !isShort || movie.duration <= 40;
-    return matchesText && matchesDuration;
+    const matchesFavoriteStatus =
+      !isSavedMovies ||
+      Object.keys(moviesData.favorites).includes(movie.movieId.toString());
+    if (matchesText && matchesDuration && matchesFavoriteStatus) {
+    }
+    return matchesText && matchesDuration && matchesFavoriteStatus;
   });
-
-const Status = {
-  AWAITING: "awaiting",
-  LOADING: "loading",
-  FOUND: "found",
-  ERROR: "error",
-};
-
-export const getStatus = (query, isLoading, result) => {
-  return [
-    !query["query-text"]
-      ? Status.AWAITING
-      : isLoading
-      ? Status.LOADING
-      : !!result.length
-      ? Status.FOUND
-      : Status.ERROR,
-    Status,
-  ];
-};
