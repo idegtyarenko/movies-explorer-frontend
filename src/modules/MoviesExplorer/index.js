@@ -27,7 +27,7 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
     <>
       <SearchForm onSubmit={handleSubmit} />
       {isLoading && <Preloader />}
-      {result && (
+      {!!result.length && (
         <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
       )}
       {error && <Error error={error} />}

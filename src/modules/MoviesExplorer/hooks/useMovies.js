@@ -12,18 +12,20 @@ export default function useMovies(query, isSavedMovies) {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
-    const [allMovies, favorites] = await Promise.all([
-      fetchMovies(),
-      getFavorites(),
-    ]);
-    if (allMovies.ok && favorites.ok) {
-      dispatch({
-        type: "set",
-        allMovies: allMovies.body,
-        favorites: favorites.body,
-      });
-    } else {
-      setError(allMovies.message || favorites.message);
+    try {
+      const [allMovies, favorites] = await Promise.all([
+        fetchMovies(),
+        getFavorites(),
+      ]);
+      if (allMovies.ok && favorites.ok) {
+        dispatch({
+          type: "set",
+          allMovies: allMovies.body,
+          favorites: favorites.body,
+        });
+      }
+    } catch (err) {
+      setError(err.message);
     }
     setIsLoading(false);
   }, [dispatch]);
