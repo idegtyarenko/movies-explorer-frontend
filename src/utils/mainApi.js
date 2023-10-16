@@ -49,9 +49,9 @@ export function addFavorite(movieData) {
   });
 }
 
-export function removeFavorite(movieId) {
+export function removeFavorite(_id) {
   return fetchResource({
-    endpoint: MAIN_API_ROOT + `/movies/${movieId}`,
+    endpoint: MAIN_API_ROOT + `/movies/${_id}`,
     method: "DELETE",
   });
 }

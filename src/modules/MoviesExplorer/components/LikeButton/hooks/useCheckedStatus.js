@@ -30,11 +30,11 @@ export default function useFavoriteStatus(movieId) {
 
     try {
       if (previousisChecked) {
-        await removeFavorite(movieId);
+        await removeFavorite(_id);
         set_id(null);
       } else {
         const response = await addFavorite(
-          allMovies.find((movie) => movie.id === movieId),
+          allMovies.find((movie) => movie.movieId === movieId),
         );
         set_id(response.body._id);
       }
