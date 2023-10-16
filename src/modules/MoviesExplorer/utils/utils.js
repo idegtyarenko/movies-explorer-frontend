@@ -11,7 +11,7 @@ export const filterMovies = (movies, query) =>
     const text = query["query-text"];
     const isShort = query["short-filter"];
     const matchesText =
-      movie.name.toLowerCase().includes(text.toLowerCase()) ||
+      movie.nameRU.toLowerCase().includes(text.toLowerCase()) ||
       movie.nameEN.toLowerCase().includes(text.toLowerCase());
     const matchesDuration = !isShort || movie.duration <= 40;
     return matchesText && matchesDuration;

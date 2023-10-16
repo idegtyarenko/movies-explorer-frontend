@@ -1,5 +1,4 @@
 import { MOVIES_API_ROOT } from "../utils/constants";
-import { formatDuration } from "../utils/utils";
 
 const { createContext, useReducer, useContext } = require("react");
 
@@ -30,16 +29,19 @@ export function useMoviesDispatch() {
   return useContext(MoviesDispatchContext);
 }
 
-function adaptMovie(rawMovie) {
-  const { id, image, nameRU, nameEN, duration, trailerLink } = rawMovie;
+function mapRawMovieDataToModel(rawMovie) {
   return {
-    id,
-    imageUrl: MOVIES_API_ROOT + image.url,
-    name: nameRU,
-    nameEN,
-    duration,
-    durationString: formatDuration(duration),
-    trailerLink,
+    movieId: rawMovie.id,
+    nameRU: rawMovie.nameRU,
+    nameEN: rawMovie.nameEN,
+    director: rawMovie.director,
+    country: rawMovie.country,
+    year: rawMovie.year,
+    duration: rawMovie.duration,
+    description: rawMovie.description,
+    trailerLink: rawMovie.trailerLink,
+    image: MOVIES_API_ROOT + rawMovie.image.url,
+    thumbnail: MOVIES_API_ROOT + rawMovie.image.formats.thumbnail.url,
   };
 }
 
@@ -58,7 +60,7 @@ function moviesReducer(movies = [], action) {
     case "set": {
       const { allMovies, favorites } = action;
       return {
-        allMovies: allMovies.map(adaptMovie),
+        allMovies: allMovies.map(mapRawMovieDataToModel),
         favorites: makeFavoritesObject(favorites),
       };
     }

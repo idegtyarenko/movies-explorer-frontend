@@ -11,11 +11,13 @@ export default function MovieCardsGrid({ isSavedMovies, movies }) {
       <ul className="movie-cards-grid">
         {movies.map((movie) => {
           const button = isSavedMovies ? (
-            <RemoveButton movieId={movie.id} />
+            <RemoveButton movieId={movie.movieId} />
           ) : (
-            <LikeButton movieId={movie.id} />
+            <LikeButton movieId={movie.movieId} />
           );
-          return <MovieCard key={movie.id} movie={movie} button={button} />;
+          return (
+            <MovieCard key={movie.movieId} movie={movie} button={button} />
+          );
         })}
       </ul>
     </Section>
