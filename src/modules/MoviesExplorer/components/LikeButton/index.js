@@ -1,15 +1,15 @@
-import useFavoriteStatus from "./hooks/useFavoriteStatus";
+import useCheckedStatus from "./hooks/useCheckedStatus";
 import "./LikeButton.css";
 
 export default function LikeButton({ movieId }) {
-  const [isFavorite, handleChange] = useFavoriteStatus(movieId);
+  const [isChecked, handleChange] = useCheckedStatus(movieId);
 
   return (
     <input
       className="like-button"
       type="checkbox"
       aria-label="В избранные"
-      checked={isFavorite}
+      checked={isChecked}
       onChange={handleChange}
     />
   );

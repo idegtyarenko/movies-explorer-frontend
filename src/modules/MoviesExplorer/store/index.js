@@ -9,7 +9,7 @@ const MoviesDispatchContext = createContext(null);
 export function MoviesProvider({ children }) {
   const initialState = {
     allMovies: [],
-    favorites: [],
+    favorites: {},
   };
   const [movies, dispatch] = useReducer(moviesReducer, initialState);
 
@@ -43,27 +43,41 @@ function adaptMovie(rawMovie) {
   };
 }
 
+function makeFavoritesObject(favorites) {
+  const result = {};
+
+  favorites.forEach((movie) => {
+    result[movie.movieId] = movie._id;
+  });
+
+  return result;
+}
+
 function moviesReducer(movies = [], action) {
   switch (action.type) {
     case "set": {
       const { allMovies, favorites } = action;
       return {
         allMovies: allMovies.map(adaptMovie),
-        favorites: favorites.map((movie) => movie.movieId),
+        favorites: makeFavoritesObject(favorites),
       };
     }
     case "addToFavorites": {
-      const { movieId } = action;
+      const { movieId, _id } = action;
       return {
         ...movies,
-        favorites: [...movies.favorites, movieId],
+        favorites: {
+          ...movies.favorites,
+          [movieId]: _id,
+        },
       };
     }
     case "removeFromFavorites": {
       const { movieId } = action;
+      const { [movieId]: removedKey, ...updatedFavorites } = movies.favorites;
       return {
         ...movies,
-        favorites: movies.favorites.filter((id) => id !== movieId),
+        favorites: updatedFavorites,
       };
     }
     default: {
