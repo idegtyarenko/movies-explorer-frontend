@@ -15,6 +15,7 @@ export default function AuthForm({
   belowButtonElement,
   onSubmit,
   error,
+  displayValidationErrors = true,
 }) {
   const { values, errors, isValid, handleChange } = useValidation({});
   function handleSubmit(e) {
@@ -39,7 +40,9 @@ export default function AuthForm({
             key={fieldDescription.id}
             fieldDescription={fieldDescription}
             value={values[fieldDescription.id] || ""}
-            error={errors[fieldDescription.id] || ""}
+            error={
+              displayValidationErrors ? errors[fieldDescription.id] || "" : ""
+            }
             onChange={handleChange}
           />
         ))}
