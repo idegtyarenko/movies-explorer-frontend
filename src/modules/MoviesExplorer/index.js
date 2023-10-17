@@ -5,7 +5,7 @@ import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
 
 import useMovies from "./hooks/useMovies";
-import { filterMovies } from "./utils/utils";
+import { filterMovies, getStatus, Status } from "./utils/utils";
 import MovieCardsGrid from "./components/MovieCardsGrid";
 import Error from "./components/Error";
 
@@ -14,10 +14,14 @@ export { MoviesDataProvider } from "./store";
 export default function MoviesExplorer({ isSavedMovies = false }) {
   const [query, setQuery] = useState({ "query-text": "", searchCount: 0 });
   const { moviesData, error, isLoading } = useMovies(query, isSavedMovies);
-  const result =
-    query["query-text"] || isSavedMovies
-      ? filterMovies(moviesData, query, isSavedMovies)
-      : [];
+  const result = filterMovies(moviesData, query, isSavedMovies);
+  const searchStatus = getStatus({
+    isLoading,
+    error,
+    query,
+    result,
+    isSavedMovies,
+  });
 
   const handleSubmit = (formValues) => {
     setQuery({
@@ -29,11 +33,11 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
   return (
     <>
       <SearchForm onSubmit={handleSubmit} />
-      {isLoading && <Preloader />}
-      {!isLoading && !!result.length && (
+      {searchStatus === Status.LOADING && <Preloader />}
+      {searchStatus === Status.FOUND && (
         <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
       )}
-      {error && <Error error={error} />}
+      {searchStatus === Status.ERROR && <Error error={error} />}
       <PaginationControl />
     </>
   );

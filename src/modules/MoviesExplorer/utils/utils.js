@@ -1,5 +1,29 @@
 import { MOVIES_API_ROOT } from "../utils/constants";
 
+export const Status = {
+  LOADING: "loading",
+  ERROR: "error",
+  FOUND: "found",
+  PENDING: "pending",
+};
+
+export function getStatus({ isLoading, error, query, result, isSavedMovies }) {
+  const text = query["query-text"];
+  const isFilterOn = query["short-filter"];
+  const isQuerySet = text || (isSavedMovies && isFilterOn);
+  const isEmptyResult = !result.length;
+  if (isLoading) {
+    return Status.LOADING;
+  }
+  if (error || (isQuerySet && isEmptyResult)) {
+    return Status.ERROR;
+  }
+  if (!text && !isSavedMovies) {
+    return Status.PENDING;
+  }
+  return Status.FOUND;
+}
+
 export function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
   const minutes = duration % 60;
