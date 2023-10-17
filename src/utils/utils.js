@@ -21,10 +21,9 @@ const handleResponse = (res) =>
   res.json().then((body) => {
     const { ok } = res;
     if (ok) {
-      return { ok, body };
+      return body;
     }
     return Promise.reject({
-      ok,
       status: res.status,
       message: body.message,
     });
@@ -32,7 +31,6 @@ const handleResponse = (res) =>
 
 const handleNetworkError = (err) =>
   Promise.reject({
-    ok: false,
     status: 0,
     message: CONNECTION_ERROR_MESSAGE,
   });

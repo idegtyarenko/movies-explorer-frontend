@@ -10,8 +10,7 @@ export default function useCheckAuth() {
       return currentUser;
     }
     try {
-      const response = await getUser();
-      const user = response.body;
+      const user = await getUser();
       dispatch({ type: "set", user });
       return user;
     } catch (err) {

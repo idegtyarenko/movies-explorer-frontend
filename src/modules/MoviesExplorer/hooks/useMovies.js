@@ -17,7 +17,7 @@ export default function useMovies(query, isSavedMovies) {
         const allMovies = await fetchMovies();
         dispatch({
           type: "setAllMovies",
-          data: allMovies.body,
+          data: allMovies,
         });
       } catch (err) {
         setError(err.message);
@@ -29,7 +29,7 @@ export default function useMovies(query, isSavedMovies) {
         const favorites = await getFavorites();
         dispatch({
           type: "setFavorites",
-          data: favorites.body,
+          data: favorites,
         });
       } catch (err) {
         setError(err.message);

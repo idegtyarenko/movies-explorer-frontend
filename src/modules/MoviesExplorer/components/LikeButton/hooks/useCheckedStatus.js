@@ -38,7 +38,7 @@ export default function useFavoriteStatus(movieId) {
         const response = await addFavorite(
           movies.find((movie) => movie.movieId === movieId),
         );
-        set_id(response.body._id);
+        set_id(response._id);
       }
     } catch (err) {
       displayNotification({
