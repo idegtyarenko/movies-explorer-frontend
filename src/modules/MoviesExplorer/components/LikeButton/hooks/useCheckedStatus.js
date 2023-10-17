@@ -16,11 +16,7 @@ export default function useFavoriteStatus(movieId) {
     // Update store only when new favorite state was successfully saved on server
     if (isChecked === !!_id) {
       const type = isChecked ? "addToFavorites" : "removeFromFavorites";
-      dispatch({
-        type,
-        movieId,
-        _id,
-      });
+      dispatch({ type, movieId, _id });
     }
   }, [isChecked, _id, dispatch, movieId]);
 
