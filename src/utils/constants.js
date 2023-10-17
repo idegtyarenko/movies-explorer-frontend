@@ -5,7 +5,7 @@ export const MAIN_API_ROOT =
     ? "https://api.smotrim.nomoreparties.co"
     : "http://localhost:3000";
 
-export const NAME_FIELD = new FieldDescription("user-name", "Имя", "text", {
+export const NAME_FIELD = new FieldDescription("name", "Имя", "text", {
   required: true,
   minLength: 2,
   maxLength: 30,

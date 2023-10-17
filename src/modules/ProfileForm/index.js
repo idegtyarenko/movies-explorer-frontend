@@ -1,58 +1,67 @@
 import { React, useState } from "react";
 
 import { NAME_FIELD, EMAIL_FIELD } from "utils/constants";
+import { useCurrentUser, useCurrentUserDispatch } from "store/user";
+
+import { updateUser } from "utils/mainApi";
 import Section from "ui/Section";
-import FormSubmitButton from "ui/FormSubmitButton";
-import Link from "ui/Link";
 
 import "./ProfileForm.css";
-import useHandleLogout from "./hooks/useHandleLogout";
+import useValidationAndCheckForChange from "./hooks/useValidationAndCheckForChange";
+import useEditNotifications from "./hooks/useEditNotifications";
+import { formId } from "./utils/constants";
 import Field from "./components/Field";
+import ProfileFormBottom from "./components/ProfileFormBottom";
 
 export default function ProfileForm() {
-  const formId = "profile";
   const fields = [NAME_FIELD, EMAIL_FIELD];
-  const [isInEditMode, setIsInEditMode] = useState(false);
-  const handleLogout = useHandleLogout();
 
-  function toggleEditMode(e) {
-    setIsInEditMode(!isInEditMode);
+  const [isInEditMode, setIsInEditMode] = useState(false);
+  const user = useCurrentUser();
+  const { values, errors, handleChange, isValidAndChanged } =
+    useValidationAndCheckForChange(user, fields);
+  const dispatch = useCurrentUserDispatch();
+  const [displaySuccessNotification, displayErrorNotification] =
+    useEditNotifications();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      setIsInEditMode(false);
+      const updatedUser = await updateUser(values);
+      dispatch({
+        type: "set",
+        user: updatedUser,
+      });
+      displaySuccessNotification(updatedUser.name);
+    } catch (err) {
+      setIsInEditMode(true);
+      displayErrorNotification(err.message);
+    }
   }
 
   return (
     <Section className="profile-form" aria-label="Профиль пользователя">
-      <h1 className="profile-form__title">Привет, Виталий!</h1>
-      <form className="profile-form__form" id={formId}>
+      <h1 className="profile-form__title">Привет, {user.name}!</h1>
+      <form className="profile-form__form" id={formId} onSubmit={handleSubmit}>
         {fields.map((fieldDescription) => (
           <Field
             key={fieldDescription.id}
+            value={values[fieldDescription.id]}
             fieldDescription={fieldDescription}
+            onChange={handleChange}
             disabled={!isInEditMode}
           />
         ))}
       </form>
-      <div className="profile-form__bottom">
-        {isInEditMode ? (
-          <>
-            <p className="profile-form__error">
-              При обновлении профиля произошла ошибка.
-            </p>
-            <FormSubmitButton formId={formId}>Сохранить</FormSubmitButton>
-          </>
-        ) : (
-          <>
-            <Link className="profile-form__link" onClick={toggleEditMode}>
-              Редактировать
-            </Link>
-            <Link
-              className="profile-form__link profile-form__link_type_logout link_color_warning"
-              onClick={handleLogout}
-            >
-              Выйти из аккаунта
-            </Link>
-          </>
-        )}
-      </div>
+      <ProfileFormBottom
+        isInEditMode={isInEditMode}
+        toggleEditMode={() => {
+          setIsInEditMode(!isInEditMode);
+        }}
+        fieldErrors={errors}
+        isValid={isValidAndChanged}
+      />
     </Section>
   );
 }
