@@ -14,7 +14,10 @@ export { MoviesDataProvider } from "./store";
 export default function MoviesExplorer({ isSavedMovies = false }) {
   const [query, setQuery] = useState({ "query-text": "", searchCount: 0 });
   const { moviesData, error, isLoading } = useMovies(query, isSavedMovies);
-  const result = filterMovies(moviesData, query, isSavedMovies);
+  const result =
+    query["query-text"] || isSavedMovies
+      ? filterMovies(moviesData, query, isSavedMovies)
+      : [];
 
   const handleSubmit = (formValues) => {
     setQuery({
@@ -27,7 +30,7 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
     <>
       <SearchForm onSubmit={handleSubmit} />
       {isLoading && <Preloader />}
-      {!!result.length && (
+      {!isLoading && !!result.length && (
         <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
       )}
       {error && <Error error={error} />}

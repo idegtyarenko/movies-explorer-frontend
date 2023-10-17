@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getFavorites } from "utils/mainApi";
 
@@ -11,35 +11,57 @@ export default function useMovies(query, isSavedMovies) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchData = useCallback(async () => {
-    try {
-      const [allMovies, favorites] = await Promise.all([
-        fetchMovies(),
-        getFavorites(),
-      ]);
-      if (allMovies.ok && favorites.ok) {
-        dispatch({
-          type: "set",
-          allMovies: allMovies.body,
-          favorites: favorites.body,
-        });
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-    setIsLoading(false);
-  }, [dispatch]);
-
   useEffect(() => {
-    if (!query["query-text"]) {
-      return;
+    async function fetchAllMovies() {
+      try {
+        const allMovies = await fetchMovies();
+        dispatch({
+          type: "setAllMovies",
+          data: allMovies.body,
+        });
+      } catch (err) {
+        setError(err.message);
+      }
     }
-    if (!moviesData.movies.length) {
+
+    async function fetchFavorites() {
+      try {
+        const favorites = await getFavorites();
+        dispatch({
+          type: "setFavorites",
+          data: favorites.body,
+        });
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+
+    if (isSavedMovies && !moviesData.isFavoritesDownloaded) {
       setError(null);
       setIsLoading(true);
-      fetchData();
+      fetchFavorites().then(() => {
+        setIsLoading(false);
+      });
     }
-  }, [query, moviesData.movies.length, fetchData]);
+
+    if (
+      !isSavedMovies &&
+      query["query-text"] &&
+      !moviesData.isAllMoviesDownloaded
+    ) {
+      setError(null);
+      setIsLoading(true);
+      fetchAllMovies().then(() => {
+        setIsLoading(false);
+      });
+    }
+  }, [
+    dispatch,
+    query,
+    moviesData.isAllMoviesDownloaded,
+    moviesData.isFavoritesDownloaded,
+    isSavedMovies,
+  ]);
 
   return { moviesData, error, isLoading };
 }

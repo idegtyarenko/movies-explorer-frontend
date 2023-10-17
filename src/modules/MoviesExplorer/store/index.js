@@ -1,4 +1,7 @@
-import { MOVIES_API_ROOT } from "../utils/constants";
+import {
+  mapRawMovieDataToModel,
+  mapFavoritesResponseToMoviesModel,
+} from "../utils/utils";
 
 const { createContext, useReducer, useContext } = require("react");
 
@@ -9,6 +12,8 @@ export function MoviesDataProvider({ children }) {
   const initialState = {
     movies: [],
     favorites: {},
+    isAllMoviesDownloaded: false,
+    isFavoritesDownloaded: false,
   };
   const [moviesData, dispatch] = useReducer(moviesDataReducer, initialState);
 
@@ -29,22 +34,6 @@ export function useMoviesDataDispatch() {
   return useContext(MoviesDataDispatchContext);
 }
 
-function mapRawMovieDataToModel(rawMovie) {
-  return {
-    movieId: rawMovie.id,
-    nameRU: rawMovie.nameRU,
-    nameEN: rawMovie.nameEN,
-    director: rawMovie.director,
-    country: rawMovie.country,
-    year: rawMovie.year,
-    duration: rawMovie.duration,
-    description: rawMovie.description,
-    trailerLink: rawMovie.trailerLink,
-    image: MOVIES_API_ROOT + rawMovie.image.url,
-    thumbnail: MOVIES_API_ROOT + rawMovie.image.formats.thumbnail.url,
-  };
-}
-
 function makeFavoritesObject(favorites) {
   const result = {};
   favorites.forEach((movie) => {
@@ -55,11 +44,30 @@ function makeFavoritesObject(favorites) {
 
 function moviesDataReducer(moviesData, action) {
   switch (action.type) {
-    case "set": {
-      const { allMovies, favorites } = action;
+    case "setAllMovies": {
+      if (moviesData.isAllMoviesDownloaded) {
+        console.error("Repeated fetch of all movies");
+      }
+      const { data } = action;
       return {
-        movies: allMovies.map(mapRawMovieDataToModel),
-        favorites: makeFavoritesObject(favorites),
+        ...moviesData,
+        movies: data.map(mapRawMovieDataToModel),
+        isAllMoviesDownloaded: true,
+      };
+    }
+    case "setFavorites": {
+      const { isFavoritesDownloaded, isAllMoviesDownloaded, movies } =
+        moviesData;
+      if (isFavoritesDownloaded) {
+        console.error("Repeated fetch of favorites");
+      }
+      const { data } = action;
+      return {
+        movies: isAllMoviesDownloaded
+          ? movies
+          : data.map(mapFavoritesResponseToMoviesModel),
+        favorites: makeFavoritesObject(data),
+        isFavoritesDownloaded: true,
       };
     }
     case "addToFavorites": {

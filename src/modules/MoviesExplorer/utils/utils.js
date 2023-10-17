@@ -1,3 +1,5 @@
+import { MOVIES_API_ROOT } from "../utils/constants";
+
 export function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
   const minutes = duration % 60;
@@ -18,7 +20,49 @@ export const filterMovies = (moviesData, query, isSavedMovies) =>
     const matchesFavoriteStatus =
       !isSavedMovies ||
       Object.keys(moviesData.favorites).includes(movie.movieId.toString());
-    if (matchesText && matchesDuration && matchesFavoriteStatus) {
-    }
     return matchesText && matchesDuration && matchesFavoriteStatus;
   });
+
+export function mapRawMovieDataToModel(rawMovie) {
+  return {
+    movieId: rawMovie.id,
+    nameRU: rawMovie.nameRU,
+    nameEN: rawMovie.nameEN,
+    director: rawMovie.director,
+    country: rawMovie.country,
+    year: rawMovie.year,
+    duration: rawMovie.duration,
+    description: rawMovie.description,
+    trailerLink: rawMovie.trailerLink,
+    image: MOVIES_API_ROOT + rawMovie.image.url,
+    thumbnail: MOVIES_API_ROOT + rawMovie.image.formats.thumbnail.url,
+  };
+}
+
+export function mapFavoritesResponseToMoviesModel({
+  movieId,
+  nameRU,
+  nameEN,
+  director,
+  country,
+  year,
+  duration,
+  description,
+  trailerLink,
+  image,
+  thumbnail,
+}) {
+  return {
+    movieId,
+    nameRU,
+    nameEN,
+    director,
+    country,
+    year,
+    duration,
+    description,
+    trailerLink,
+    image,
+    thumbnail,
+  };
+}
