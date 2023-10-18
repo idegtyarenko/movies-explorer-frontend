@@ -11,11 +11,7 @@ export default function useFormSubmit() {
 
   async function handleSubmit(values) {
     try {
-      await signUp({
-        email: values.email,
-        password: values.password,
-        name: values["user-name"],
-      });
+      await signUp(values);
       try {
         await checkAuth();
         navigate("/movies");
