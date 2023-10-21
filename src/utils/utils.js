@@ -56,3 +56,13 @@ export async function fetchResource({
     return handleNetworkError(err);
   }
 }
+
+export function saveSearchData(data) {
+  localStorage.setItem("searchData", JSON.stringify(data));
+}
+
+export function loadSearchData() {
+  return localStorage.getItem("searchData")
+    ? JSON.parse(localStorage.getItem("searchData"))
+    : null;
+}

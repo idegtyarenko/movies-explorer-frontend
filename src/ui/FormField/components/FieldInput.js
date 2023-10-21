@@ -17,7 +17,7 @@ export default function FieldInput({
       className={joinClassNames([defaultClassName, className])}
       type={type || "text"}
       name={id}
-      value={value}
+      value={value || ""}
       onChange={onChange}
       {...props}
     />

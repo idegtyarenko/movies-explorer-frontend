@@ -8,10 +8,10 @@ export const Status = {
 };
 
 export function getStatus({ isLoading, error, query, result, isSavedMovies }) {
-  const text = query["query-text"];
-  const isFilterOn = query["short-filter"];
+  const text = query ? query["query-text"] : "";
+  const isFilterOn = query ? query["short-filter"] : false;
   const isQuerySet = text || (isSavedMovies && isFilterOn);
-  const isEmptyResult = !result.length;
+  const isEmptyResult = !result || !result.length;
   if (isLoading) {
     return Status.LOADING;
   }
@@ -34,8 +34,8 @@ export function formatDuration(duration) {
 
 export const filterMovies = (moviesData, query, isSavedMovies) =>
   moviesData.movies.filter((movie) => {
-    const text = query["query-text"];
-    const isShort = query["short-filter"];
+    const text = query ? query["query-text"] : "";
+    const isShort = query ? query["short-filter"] : false;
     const matchesText =
       movie.nameRU.toLowerCase().includes(text.toLowerCase()) ||
       movie.nameEN.toLowerCase().includes(text.toLowerCase()) ||

@@ -7,16 +7,13 @@ import Switch from "ui/Switch";
 import "./SearchForm.css";
 import IconButton from "ui/IconButton";
 
-export default function SearchForm({ onSubmit }) {
-  const { values, handleChange } = useValidation({
-    "query-text": "",
-    "short-filter": false,
-  });
+export default function SearchForm({ onSubmit, initialQuery }) {
+  const { values, handleChange } = useValidation(initialQuery);
   const displayNotification = useDisplayNotification();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (values["query-text"]) {
+    if (values && values["query-text"]) {
       onSubmit(values);
     } else {
       displayNotification({
@@ -42,7 +39,7 @@ export default function SearchForm({ onSubmit }) {
             type="search"
             placeholder="Фильм"
             onChange={handleChange}
-            value={values["query-text"]}
+            value={values && values["query-text"]}
             required
           />
           <IconButton
@@ -56,7 +53,7 @@ export default function SearchForm({ onSubmit }) {
           name="short-filter"
           label="Короткометражки"
           onChange={handleSwitchChange}
-          checked={values["short-filter"]}
+          checked={values && values["short-filter"]}
         />
       </form>
     </Section>

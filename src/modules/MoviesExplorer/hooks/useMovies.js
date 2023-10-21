@@ -5,7 +5,7 @@ import { getFavorites } from "utils/mainApi";
 import { useMoviesData, useMoviesDataDispatch } from "../store";
 import fetchMovies from "../utils/moviesApi";
 
-export default function useMovies(query, isSavedMovies) {
+export default function useMovies(query, searchCount, isSavedMovies) {
   const moviesData = useMoviesData();
   const dispatch = useMoviesDataDispatch();
   const [error, setError] = useState(null);
@@ -36,6 +36,7 @@ export default function useMovies(query, isSavedMovies) {
       }
     }
 
+    // Сохраненные фильмы
     if (isSavedMovies && !moviesData.isFavoritesDownloaded) {
       setError(null);
       setIsLoading(true);
@@ -44,11 +45,8 @@ export default function useMovies(query, isSavedMovies) {
       });
     }
 
-    if (
-      !isSavedMovies &&
-      query["query-text"] &&
-      !moviesData.isAllMoviesDownloaded
-    ) {
+    // Фильмы
+    if (!isSavedMovies && searchCount && !moviesData.isAllMoviesDownloaded) {
       setError(null);
       setIsLoading(true);
       fetchAllMovies().then(() => {
@@ -57,7 +55,7 @@ export default function useMovies(query, isSavedMovies) {
     }
   }, [
     dispatch,
-    query,
+    searchCount,
     moviesData.isAllMoviesDownloaded,
     moviesData.isFavoritesDownloaded,
     isSavedMovies,

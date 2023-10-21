@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { loadSearchData, saveSearchData } from "utils/utils";
 import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
@@ -12,9 +13,23 @@ import Error from "./components/Error";
 export { MoviesDataProvider } from "./store";
 
 export default function MoviesExplorer({ isSavedMovies = false }) {
-  const [query, setQuery] = useState({ "query-text": "", searchCount: 0 });
-  const { moviesData, error, isLoading } = useMovies(query, isSavedMovies);
-  const result = filterMovies(moviesData, query, isSavedMovies);
+  const previousSearchData = loadSearchData();
+
+  const savedQuery = previousSearchData?.query;
+  const initialQuery = isSavedMovies ? null : savedQuery;
+  const [query, setQuery] = useState(initialQuery);
+
+  const [searchCount, setSearchCount] = useState(0);
+  const { moviesData, error, isLoading } = useMovies(
+    query,
+    searchCount,
+    isSavedMovies,
+  );
+  const result =
+    searchCount || isSavedMovies
+      ? filterMovies(moviesData, query, isSavedMovies)
+      : previousSearchData?.result;
+
   const searchStatus = getStatus({
     isLoading,
     error,
@@ -23,16 +38,18 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
     isSavedMovies,
   });
 
+  if (!isSavedMovies) {
+    saveSearchData({ query, result });
+  }
+
   const handleSubmit = (formValues) => {
-    setQuery({
-      ...formValues,
-      searchCount: query.searchCount + 1, // Changes query to restart downloading on retry after error
-    });
+    setQuery(formValues);
+    setSearchCount((oldValue) => oldValue + 1);
   };
 
   return (
     <>
-      <SearchForm onSubmit={handleSubmit} />
+      <SearchForm onSubmit={handleSubmit} initialQuery={query} />
       {searchStatus === Status.LOADING && <Preloader />}
       {searchStatus === Status.FOUND && (
         <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
