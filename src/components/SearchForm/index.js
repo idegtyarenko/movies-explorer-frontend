@@ -1,5 +1,4 @@
 import useValidation from "hooks/useValidation";
-import { useDisplayNotification } from "modules/ContentWithNotifications";
 import Section from "ui/Section";
 import FormField from "ui/FormField";
 import Switch from "ui/Switch";
@@ -9,19 +8,10 @@ import IconButton from "ui/IconButton";
 
 export default function SearchForm({ onSubmit, initialQuery }) {
   const { values, handleChange } = useValidation(initialQuery);
-  const displayNotification = useDisplayNotification();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (values && values["query-text"]) {
-      onSubmit(values);
-    } else {
-      displayNotification({
-        type: "error",
-        title: "Нужно ввести ключевое слово",
-        text: "Чтобы что-то найти, надо что-то искать.",
-      });
-    }
+    onSubmit(values);
   };
 
   const handleSwitchChange = (e) => {

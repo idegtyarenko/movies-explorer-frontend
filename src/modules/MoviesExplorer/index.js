@@ -4,6 +4,7 @@ import { loadSearchData, saveSearchData } from "utils/utils";
 import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
+import { useDisplayNotification } from "modules/ContentWithNotifications";
 
 import useMovies from "./hooks/useMovies";
 import { filterMovies, getStatus, Status } from "./utils/utils";
@@ -42,9 +43,18 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
     saveSearchData({ query, result });
   }
 
+  const displayNotification = useDisplayNotification();
   const handleSubmit = (formValues) => {
-    setQuery(formValues);
-    setSubmitCount((oldValue) => oldValue + 1);
+    if (isSavedMovies || formValues["query-text"]) {
+      setQuery(formValues);
+      setSubmitCount((oldValue) => oldValue + 1);
+    } else {
+      displayNotification({
+        type: "error",
+        title: "Нужно ввести ключевое слово",
+        text: "Чтобы что-то найти, надо что-то искать.",
+      });
+    }
   };
 
   return (
