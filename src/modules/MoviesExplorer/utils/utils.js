@@ -47,23 +47,23 @@ export const filterMovies = (moviesData, query, isSavedMovies) =>
     return matchesText && matchesDuration && matchesFavoriteStatus;
   });
 
-export function mapRawMovieDataToModel(rawMovie) {
+export function mapApiMovieToAppModel(apiMovie) {
   return {
-    movieId: rawMovie.id,
-    nameRU: rawMovie.nameRU,
-    nameEN: rawMovie.nameEN,
-    director: rawMovie.director,
-    country: rawMovie.country,
-    year: rawMovie.year,
-    duration: rawMovie.duration,
-    description: rawMovie.description,
-    trailerLink: rawMovie.trailerLink,
-    image: MOVIES_API_ROOT + rawMovie.image.url,
-    thumbnail: MOVIES_API_ROOT + rawMovie.image.formats.thumbnail.url,
+    movieId: apiMovie.id,
+    nameRU: apiMovie.nameRU,
+    nameEN: apiMovie.nameEN,
+    director: apiMovie.director,
+    country: apiMovie.country,
+    year: apiMovie.year,
+    duration: apiMovie.duration,
+    description: apiMovie.description,
+    trailerLink: apiMovie.trailerLink,
+    image: MOVIES_API_ROOT + apiMovie.image.url,
+    thumbnail: MOVIES_API_ROOT + apiMovie.image.formats.thumbnail.url,
   };
 }
 
-export function mapFavoritesResponseToMoviesModel({
+export function mapApiFavoriteToAppModel({
   movieId,
   nameRU,
   nameEN,

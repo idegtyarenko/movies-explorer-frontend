@@ -1,6 +1,6 @@
 import {
-  mapRawMovieDataToModel,
-  mapFavoritesResponseToMoviesModel,
+  mapApiMovieToAppModel,
+  mapApiFavoriteToAppModel,
 } from "../utils/utils";
 
 const { createContext, useReducer, useContext } = require("react");
@@ -51,7 +51,7 @@ function moviesDataReducer(moviesData, action) {
       const { data } = action;
       return {
         ...moviesData,
-        movies: data.map(mapRawMovieDataToModel),
+        movies: data.map(mapApiMovieToAppModel),
         isAllMoviesDownloaded: true,
       };
     }
@@ -65,7 +65,7 @@ function moviesDataReducer(moviesData, action) {
       return {
         movies: isAllMoviesDownloaded
           ? movies
-          : data.map(mapFavoritesResponseToMoviesModel),
+          : data.map(mapApiFavoriteToAppModel),
         favorites: makeFavoritesObject(data),
         isFavoritesDownloaded: true,
       };
