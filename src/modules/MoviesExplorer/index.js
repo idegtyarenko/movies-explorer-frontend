@@ -19,14 +19,14 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
   const initialQuery = isSavedMovies ? null : savedQuery;
   const [query, setQuery] = useState(initialQuery);
 
-  const [searchCount, setSearchCount] = useState(0);
+  const [submitCount, setSubmitCount] = useState(0);
   const { moviesData, error, isLoading } = useMovies(
     query,
-    searchCount,
+    submitCount,
     isSavedMovies,
   );
   const result =
-    searchCount || isSavedMovies
+    submitCount || isSavedMovies
       ? filterMovies(moviesData, query, isSavedMovies)
       : previousSearchData?.result;
 
@@ -44,7 +44,7 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
 
   const handleSubmit = (formValues) => {
     setQuery(formValues);
-    setSearchCount((oldValue) => oldValue + 1);
+    setSubmitCount((oldValue) => oldValue + 1);
   };
 
   return (
