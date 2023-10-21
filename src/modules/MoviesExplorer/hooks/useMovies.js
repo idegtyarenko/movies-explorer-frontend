@@ -5,7 +5,7 @@ import { getFavorites } from "utils/mainApi";
 import { useMoviesData, useMoviesDataDispatch } from "../store";
 import fetchMovies from "../utils/moviesApi";
 
-export default function useMovies(query, searchCount, isSavedMovies) {
+export default function useMovies(submitCount, isSavedMovies) {
   const moviesData = useMoviesData();
   const dispatch = useMoviesDataDispatch();
   const [error, setError] = useState(null);
@@ -46,7 +46,7 @@ export default function useMovies(query, searchCount, isSavedMovies) {
     }
 
     // Фильмы
-    if (!isSavedMovies && searchCount && !moviesData.isAllMoviesDownloaded) {
+    if (!isSavedMovies && submitCount && !moviesData.isAllMoviesDownloaded) {
       setError(null);
       setIsLoading(true);
       fetchAllMovies().then(() => {
@@ -55,7 +55,7 @@ export default function useMovies(query, searchCount, isSavedMovies) {
     }
   }, [
     dispatch,
-    searchCount,
+    submitCount,
     moviesData.isAllMoviesDownloaded,
     moviesData.isFavoritesDownloaded,
     isSavedMovies,

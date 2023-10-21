@@ -22,7 +22,6 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
 
   const [submitCount, setSubmitCount] = useState(0);
   const { moviesData, error, isLoading } = useMovies(
-    query,
     submitCount,
     isSavedMovies,
   );
