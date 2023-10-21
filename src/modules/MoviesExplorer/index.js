@@ -14,9 +14,10 @@ export { MoviesDataProvider } from "./store";
 
 export default function MoviesExplorer({ isSavedMovies = false }) {
   const previousSearchData = loadSearchData();
-
-  const savedQuery = previousSearchData?.query;
-  const initialQuery = isSavedMovies ? null : savedQuery;
+  const emptyQuery = { "query-text": "", "short-filter": false };
+  const initialQuery = !isSavedMovies
+    ? previousSearchData?.query ?? emptyQuery
+    : emptyQuery;
   const [query, setQuery] = useState(initialQuery);
 
   const [submitCount, setSubmitCount] = useState(0);
