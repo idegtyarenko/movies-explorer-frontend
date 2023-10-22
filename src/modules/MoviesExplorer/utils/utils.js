@@ -32,6 +32,11 @@ export function formatDuration(duration) {
   return hoursString + minutesString;
 }
 
+export const getCardsInRow = () => {
+  const width = window.innerWidth;
+  return width >= 1200 ? 4 : width >= 910 ? 3 : width >= 629 ? 2 : 1;
+};
+
 export const filterMovies = (moviesData, query, isSavedMovies) =>
   moviesData.movies.filter((movie) => {
     const text = query ? query["query-text"] : "";

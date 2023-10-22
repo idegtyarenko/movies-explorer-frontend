@@ -9,6 +9,7 @@ import useMovies from "./hooks/useMovies";
 import { filterMovies, getStatus, Status } from "./utils/utils";
 import MovieCardsGrid from "./components/MovieCardsGrid";
 import Error from "./components/Error";
+import usePaginationState from "./hooks/usePaginationState";
 
 export { MoviesDataProvider } from "./store";
 
@@ -48,15 +49,19 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
     isSavedMovies,
   });
 
+  const { shownCardsNumber, loadNewCards } = usePaginationState();
+  const shownCards = result.slice(0, shownCardsNumber);
+  const isMoreCardsAvailable = result.length > shownCardsNumber;
+
   return (
     <>
       <SearchForm onSubmit={handleSubmit} initialQuery={query} />
       {searchStatus === Status.LOADING && <Preloader />}
       {searchStatus === Status.FOUND && (
-        <MovieCardsGrid movies={result} isSavedMovies={isSavedMovies} />
+        <MovieCardsGrid movies={shownCards} isSavedMovies={isSavedMovies} />
       )}
       {searchStatus === Status.ERROR && <Error error={error} />}
-      <PaginationControl />
+      {isMoreCardsAvailable && <PaginationControl onClick={loadNewCards} />}
     </>
   );
 }
