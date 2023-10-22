@@ -1,11 +1,10 @@
-import { useState } from "react";
-
 import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
 import { useDisplayNotification } from "modules/ContentWithNotifications";
 
-import { loadPreviousQuery, saveQuery, saveResult } from "./utils/localStorage";
+import useSearchFormState from "./hooks/useSearchFormState";
+import { saveQuery, saveResult } from "./utils/localStorage";
 import useMovies from "./hooks/useMovies";
 import { filterMovies, getStatus, Status } from "./utils/utils";
 import MovieCardsGrid from "./components/MovieCardsGrid";
@@ -14,12 +13,8 @@ import Error from "./components/Error";
 export { MoviesDataProvider } from "./store";
 
 export default function MoviesExplorer({ isSavedMovies = false }) {
-  const emptyQuery = { "query-text": "", "short-filter": false };
-  const initialQuery = !isSavedMovies
-    ? loadPreviousQuery() ?? emptyQuery
-    : emptyQuery;
-  const [query, setQuery] = useState(initialQuery);
-  const [submitCount, setSubmitCount] = useState(0);
+  const { query, setQuery, submitCount, setSubmitCount } =
+    useSearchFormState(isSavedMovies);
 
   const { moviesData, error, isLoading } = useMovies(
     submitCount,
