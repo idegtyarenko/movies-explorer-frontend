@@ -41,7 +41,10 @@ export default function useMovies(submitCount, isSavedMovies) {
     if (!moviesData.isAllMoviesDownloaded && isAllMoviesSearchStarted) {
       fetchesNecessary.push(fetchAllMovies());
     }
-    if (!moviesData.isFavoritesDownloaded) {
+    if (
+      !moviesData.isFavoritesDownloaded &&
+      (isAllMoviesSearchStarted || isSavedMovies)
+    ) {
       fetchesNecessary.push(fetchFavorites());
     }
     if (!fetchesNecessary.length) {
