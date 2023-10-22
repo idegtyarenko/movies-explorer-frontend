@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 import useCheckAuth from "hooks/useCheckAuth";
@@ -8,21 +7,7 @@ export default function ProtectedRouteElement({
   element: Component,
   ...props
 }) {
-  const [isAuthorized, setIsAuthorized] = useState(undefined);
-  const checkAuth = useCheckAuth();
-
-  useEffect(() => {
-    async function executeCheck() {
-      try {
-        await checkAuth();
-        setIsAuthorized(true);
-      } catch (err) {
-        setIsAuthorized(false);
-      }
-    }
-
-    executeCheck();
-  }, [checkAuth]);
+  const isAuthorized = useCheckAuth();
 
   return isAuthorized === undefined ? (
     <Preloader />

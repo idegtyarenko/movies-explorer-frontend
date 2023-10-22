@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useCurrentUser } from "store/user";
+import useCheckAuth from "hooks/useCheckAuth";
 import { SectionWithWrapper } from "ui/Section";
 import Logo from "ui/Logo";
 
@@ -15,8 +15,7 @@ import "./Header.css";
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const isDesktop = useIsDesktop();
-  const user = useCurrentUser();
-  const isLoggedIn = "_id" in user;
+  const isAuthorized = useCheckAuth();
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
@@ -29,7 +28,7 @@ export default function Header() {
       className="header__wrapper section_mobile-margins_m"
     >
       <Logo className="header__logo" />
-      {isLoggedIn ? (
+      {isAuthorized ? (
         <>
           {isDesktop ? (
             <DesktopNav>

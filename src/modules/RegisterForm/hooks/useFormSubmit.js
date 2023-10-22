@@ -6,14 +6,14 @@ import { signUp } from "utils/mainApi";
 
 export default function useFormSubmit() {
   const [error, setError] = useState("");
-  const checkAuth = useCheckAuth();
+  const isAuthorized = useCheckAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(values) {
     try {
       await signUp(values);
       try {
-        await checkAuth();
+        await isAuthorized;
         navigate("/movies");
       } catch (err) {
         navigate("/signin");

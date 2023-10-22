@@ -28,7 +28,7 @@ export function signOut() {
   });
 }
 
-export function getUser() {
+export function fetchUser() {
   return fetchResource({ endpoint: MAIN_API_ROOT + "/users/me" });
 }
 
