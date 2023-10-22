@@ -63,6 +63,7 @@ function moviesDataReducer(moviesData, action) {
       }
       const { data } = action;
       return {
+        ...moviesData,
         movies: isAllMoviesDownloaded
           ? movies
           : data.map(mapApiFavoriteToAppModel),

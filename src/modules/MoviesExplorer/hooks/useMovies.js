@@ -36,23 +36,23 @@ export default function useMovies(submitCount, isSavedMovies) {
       }
     }
 
-    // Сохраненные фильмы
-    if (isSavedMovies && !moviesData.isFavoritesDownloaded) {
-      setError(null);
-      setIsLoading(true);
-      fetchFavorites().then(() => {
-        setIsLoading(false);
-      });
+    const isAllMoviesSearchStarted = !isSavedMovies && submitCount;
+    const fetchesNecessary = [];
+    if (!moviesData.isAllMoviesDownloaded && isAllMoviesSearchStarted) {
+      fetchesNecessary.push(fetchAllMovies());
+    }
+    if (!moviesData.isFavoritesDownloaded) {
+      fetchesNecessary.push(fetchFavorites());
+    }
+    if (!fetchesNecessary.length) {
+      return;
     }
 
-    // Фильмы
-    if (!isSavedMovies && submitCount && !moviesData.isAllMoviesDownloaded) {
-      setError(null);
-      setIsLoading(true);
-      fetchAllMovies().then(() => {
-        setIsLoading(false);
-      });
-    }
+    setError(null);
+    setIsLoading(true);
+    Promise.all(fetchesNecessary).then(() => {
+      setIsLoading(false);
+    });
   }, [
     dispatch,
     submitCount,
