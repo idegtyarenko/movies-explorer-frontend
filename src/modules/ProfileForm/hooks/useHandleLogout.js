@@ -4,7 +4,6 @@ import { signOut } from "utils/mainApi";
 import { useDisplayNotification } from "modules/ContentWithNotifications";
 import { useCurrentUserDispatch } from "store/user";
 import { CONNECTION_ERROR_MESSAGE } from "utils/strings";
-import { saveSearchData } from "utils/utils";
 
 export default function useHandleLogout() {
   const displayNotification = useDisplayNotification();
@@ -23,7 +22,7 @@ export default function useHandleLogout() {
       type: "set",
       user: {},
     });
-    saveSearchData(null);
+    localStorage.clear();
     navigate("/");
   };
 }

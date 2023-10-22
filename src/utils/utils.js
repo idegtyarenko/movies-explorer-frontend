@@ -57,12 +57,12 @@ export async function fetchResource({
   }
 }
 
-export function saveSearchData(data) {
-  localStorage.setItem("searchData", JSON.stringify(data));
+export function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
 }
 
-export function loadSearchData() {
-  return localStorage.getItem("searchData")
-    ? JSON.parse(localStorage.getItem("searchData"))
+export function loadData(key) {
+  return localStorage.getItem(key)
+    ? JSON.parse(localStorage.getItem(key))
     : null;
 }

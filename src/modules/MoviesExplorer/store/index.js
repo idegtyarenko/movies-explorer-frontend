@@ -1,7 +1,8 @@
 import {
-  mapApiMovieToAppModel,
-  mapApiFavoriteToAppModel,
+  mapBeatfilmApiMovieToAppModel,
+  mapMainApiMovieToAppModel,
 } from "../utils/utils";
+import { loadPreviousResult } from "../utils/localStorage";
 
 const { createContext, useReducer, useContext } = require("react");
 
@@ -10,7 +11,7 @@ const MoviesDataDispatchContext = createContext(null);
 
 export function MoviesDataProvider({ children }) {
   const initialState = {
-    movies: [],
+    movies: loadPreviousResult(),
     favorites: {},
     isAllMoviesDownloaded: false,
     isFavoritesDownloaded: false,
@@ -42,16 +43,26 @@ function makeFavoritesObject(favorites) {
   return result;
 }
 
+function combineMovieArrays(arrays) {
+  return arrays.reduce((acc, array) => {
+    const deduplicatedArray = array.filter(
+      ({ movieId }) => !acc.find((movie) => movie.movieId === movieId),
+    );
+    return acc.concat(deduplicatedArray);
+  }, []);
+}
+
 function moviesDataReducer(moviesData, action) {
   switch (action.type) {
     case "setAllMovies": {
       if (moviesData.isAllMoviesDownloaded) {
         console.error("Repeated fetch of all movies");
+        return moviesData;
       }
       const { data } = action;
       return {
         ...moviesData,
-        movies: data.map(mapApiMovieToAppModel),
+        movies: data.map(mapBeatfilmApiMovieToAppModel),
         isAllMoviesDownloaded: true,
       };
     }
@@ -60,13 +71,14 @@ function moviesDataReducer(moviesData, action) {
         moviesData;
       if (isFavoritesDownloaded) {
         console.error("Repeated fetch of favorites");
+        return moviesData;
       }
       const { data } = action;
       return {
         ...moviesData,
         movies: isAllMoviesDownloaded
           ? movies
-          : data.map(mapApiFavoriteToAppModel),
+          : combineMovieArrays([movies, data.map(mapMainApiMovieToAppModel)]),
         favorites: makeFavoritesObject(data),
         isFavoritesDownloaded: true,
       };

@@ -47,7 +47,7 @@ export const filterMovies = (moviesData, query, isSavedMovies) =>
     return matchesText && matchesDuration && matchesFavoriteStatus;
   });
 
-export function mapApiMovieToAppModel(apiMovie) {
+export function mapBeatfilmApiMovieToAppModel(apiMovie) {
   return {
     movieId: apiMovie.id,
     nameRU: apiMovie.nameRU,
@@ -63,7 +63,7 @@ export function mapApiMovieToAppModel(apiMovie) {
   };
 }
 
-export function mapApiFavoriteToAppModel({
+export function mapMainApiMovieToAppModel({
   movieId,
   nameRU,
   nameEN,
