@@ -1,5 +1,6 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
+import { useCurrentUser } from "store/user";
 import useValidation from "hooks/useValidation";
 import Logo from "ui/Logo";
 import FormSubmitButton from "ui/FormSubmitButton";
@@ -16,7 +17,15 @@ export default function AuthForm({
   onSubmit,
   error,
 }) {
+  const navigate = useNavigate();
+
+  const user = useCurrentUser();
+  if (user) {
+    navigate("/movies");
+  }
+
   const { values, errors, isValid, handleChange } = useValidation({});
+
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(values);
