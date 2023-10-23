@@ -38,19 +38,23 @@ export default function useMovies(submitCount, isSavedMovies) {
 
     const isAllMoviesSearchStarted = !isSavedMovies && submitCount;
     const fetchesNecessary = [];
-    if (!moviesData.isAllMoviesDownloaded && isAllMoviesSearchStarted) {
+    if (
+      !moviesData.isAllMoviesDownloaded &&
+      isAllMoviesSearchStarted &&
+      !isLoading
+    ) {
       fetchesNecessary.push(fetchAllMovies());
     }
     if (
       !moviesData.isFavoritesDownloaded &&
-      (isAllMoviesSearchStarted || isSavedMovies)
+      (isAllMoviesSearchStarted || isSavedMovies) &&
+      !isLoading
     ) {
       fetchesNecessary.push(fetchFavorites());
     }
     if (!fetchesNecessary.length) {
       return;
     }
-
     setError(null);
     setIsLoading(true);
     Promise.all(fetchesNecessary).then(() => {
@@ -62,6 +66,7 @@ export default function useMovies(submitCount, isSavedMovies) {
     moviesData.isAllMoviesDownloaded,
     moviesData.isFavoritesDownloaded,
     isSavedMovies,
+    isLoading,
   ]);
 
   return { moviesData, error, isLoading };
