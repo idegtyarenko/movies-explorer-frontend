@@ -10,16 +10,16 @@ export default function usePaginationState(isSavedMovies) {
     : Infinity;
 
   const [shownCardsNumber, setShownCardsNumber] = useState(initialNumber);
-  const [batchSize, setBatchSize] = useState(4);
+  const [batchSize, setBatchSize] = useState(computeBatchSize());
+
+  function computeBatchSize() {
+    const cardsInRow = getCardsInRow();
+    return cardsInRow > 1 ? cardsInRow : 2;
+  }
 
   useEffect(() => {
     if (isSavedMovies) {
       return;
-    }
-
-    function computeBatchSize() {
-      const cardsInRow = getCardsInRow();
-      return cardsInRow > 1 ? cardsInRow : 2;
     }
 
     const handleResize = () => setBatchSize(computeBatchSize());
