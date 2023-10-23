@@ -25,7 +25,6 @@ export default function LoginForm() {
       belowButtonElement={hint}
       onSubmit={handleSubmit}
       error={error}
-      displayValidationErrors={false}
     />
   );
 }
