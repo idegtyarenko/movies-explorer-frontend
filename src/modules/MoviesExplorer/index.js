@@ -49,7 +49,7 @@ export default function MoviesExplorer({ isSavedMovies = false }) {
     isSavedMovies,
   });
 
-  const { shownCardsNumber, loadNewCards } = usePaginationState();
+  const { shownCardsNumber, loadNewCards } = usePaginationState(isSavedMovies);
   const shownCards = result.slice(0, shownCardsNumber);
   const isMoreCardsAvailable = result.length > shownCardsNumber;
 
