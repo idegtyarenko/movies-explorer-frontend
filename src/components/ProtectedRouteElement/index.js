@@ -14,6 +14,6 @@ export default function ProtectedRouteElement({
   ) : isAuthorized ? (
     <Component {...props} />
   ) : (
-    <Navigate to="/signin" replace />
+    <Navigate to="/" replace />
   );
 }
