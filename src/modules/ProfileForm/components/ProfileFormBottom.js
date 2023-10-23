@@ -11,7 +11,7 @@ export default function ProfileFormBottom({
   fieldErrors,
   isValid,
 }) {
-  const handleLogout = useHandleLogout();
+  const onSignOut = useHandleLogout();
 
   const errorText = Object.values(fieldErrors)
     .filter((value) => !!value)
@@ -33,7 +33,7 @@ export default function ProfileFormBottom({
           </Link>
           <Link
             className="profile-form__link profile-form__link_type_logout link_color_warning"
-            onClick={handleLogout}
+            onClick={onSignOut}
           >
             Выйти из аккаунта
           </Link>
