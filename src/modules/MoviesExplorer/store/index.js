@@ -11,7 +11,7 @@ const MoviesDataDispatchContext = createContext(null);
 
 export function MoviesDataProvider({ children }) {
   const initialState = {
-    movies: loadPreviousResult(),
+    movies: loadPreviousResult() ?? [],
     favorites: {},
     isAllMoviesDownloaded: false,
     isFavoritesDownloaded: false,
