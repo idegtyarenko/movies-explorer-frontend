@@ -29,7 +29,10 @@ export function signOut() {
 }
 
 export function fetchUser() {
-  return fetchResource({ endpoint: MAIN_API_ROOT + "/users/me" });
+  return fetchResource({
+    endpoint: MAIN_API_ROOT + "/users/me",
+    headers: { "Cache-Control": "no-cache, no-store, must-revalidate" },
+  });
 }
 
 export function updateUser(user) {
