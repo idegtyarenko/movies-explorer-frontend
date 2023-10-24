@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import { signOut } from "utils/mainApi";
 import { useDisplayNotification } from "modules/ContentWithNotifications";
 import { useCurrentUserDispatch } from "store/user";
@@ -8,7 +6,6 @@ import { CONNECTION_ERROR_MESSAGE } from "utils/strings";
 export default function useHandleLogout() {
   const displayNotification = useDisplayNotification();
   const userDispatch = useCurrentUserDispatch();
-  const navigate = useNavigate();
 
   return () => {
     signOut().catch(() => {
@@ -23,6 +20,5 @@ export default function useHandleLogout() {
       user: {},
     });
     localStorage.clear();
-    navigate("/");
   };
 }
