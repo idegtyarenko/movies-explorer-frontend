@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { signOut } from "utils/mainApi";
+import { fetchUser, signOut } from "utils/mainApi";
 import { useDisplayNotification } from "modules/ContentWithNotifications";
 import { useCurrentUserDispatch } from "store/user";
 import { CONNECTION_ERROR_MESSAGE } from "utils/strings";
@@ -10,7 +10,11 @@ export default function useHandleLogout() {
   const userDispatch = useCurrentUserDispatch();
   const navigate = useNavigate();
 
-  function clearUserData() {
+  async function clearUserData() {
+    const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
+    if (isFirefox) {
+      await fetchUser(); // A quick fix for logout issues in Firefox
+    }
     userDispatch({
       type: "set",
       user: {},
