@@ -20,7 +20,7 @@ export default function AuthForm({
   const navigate = useNavigate();
 
   const user = useCurrentUser();
-  if (user) {
+  if (user?._id) {
     navigate("/movies");
   }
 
