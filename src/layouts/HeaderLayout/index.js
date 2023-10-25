@@ -1,13 +1,12 @@
+import ContentWithNotifications from "modules/ContentWithNotifications";
 import Header from "components/Header";
 import Main from "ui/Main";
-import Notifications from "modules/Notifications";
 
 export default function HeaderLayout({ isLoggedIn, children }) {
   return (
-    <>
-      <Header isLoggedIn={isLoggedIn} />
+    <ContentWithNotifications>
+      <Header />
       <Main>{children}</Main>
-      <Notifications />
-    </>
+    </ContentWithNotifications>
   );
 }

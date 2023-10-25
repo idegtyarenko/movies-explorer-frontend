@@ -1,0 +1,19 @@
+.notifications {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 360px;
+}
+
+@media screen and (max-width: 428px) {
+  .notifications {
+    width: 100%;
+    bottom: 16px;
+    right: 0;
+    padding-inline: 12px;
+  }
+}

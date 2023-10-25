@@ -1,0 +1,41 @@
+.profile-form {
+  display: grid;
+
+  width: 100%;
+  max-width: 470px;
+  padding-inline: 30px;
+  justify-content: stretch;
+
+  margin-top: var(--header-height);
+  min-height: calc(100svh - var(--header-height));
+  grid-template-rows: 15fr auto 23fr;
+}
+
+.profile-form__title {
+  margin: 70px 0 107px;
+  align-self: end;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile-form {
+    grid-template-rows: 345fr auto 511fr;
+  }
+
+  .profile-form__title {
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .profile-form {
+    grid-template-rows: auto auto 1fr;
+  }
+
+  .profile-form__title {
+    margin-bottom: 64px;
+  }
+}

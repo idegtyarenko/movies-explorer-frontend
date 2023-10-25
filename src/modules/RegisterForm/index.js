@@ -1,9 +1,12 @@
+import { EMAIL_FIELD, NAME_FIELD, PASSWORD_FIELD } from "utils/constants";
 import HintLink from "components/HintLink";
 import AuthForm from "components/AuthForm";
-import { emailField, nameField, passwordField } from "utils/constants";
+
+import useFormSubmit from "./hooks/useFormSubmit";
 
 export default function RegisterForm() {
-  const fields = [nameField, emailField, passwordField];
+  const fields = [NAME_FIELD, EMAIL_FIELD, PASSWORD_FIELD];
+  const { handleSubmit, error } = useFormSubmit();
 
   const hint = (
     <HintLink text="Уже зарегистрированы?" buttonText="Войти" to="/signin" />
@@ -16,6 +19,8 @@ export default function RegisterForm() {
       fields={fields}
       buttonName="Зарегистрироваться"
       belowButtonElement={hint}
+      onSubmit={handleSubmit}
+      error={error}
     />
   );
 }

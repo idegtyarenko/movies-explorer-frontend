@@ -1,5 +1,6 @@
-import { React, useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 
+import useCheckAuth from "hooks/useCheckAuth";
 import { SectionWithWrapper } from "ui/Section";
 import Logo from "ui/Logo";
 
@@ -8,24 +9,17 @@ import TouchNav from "./components/TouchNav";
 import NavContents from "./components/NavContents";
 import Burger from "./components/Burger";
 import AuthButtons from "./components/AuthButtons";
-
+import useIsDesktop from "./hooks/useIsDesktop";
 import "./Header.css";
 
-export default function Header({ isLoggedIn }) {
-  const checkIfDesktop = useCallback(() => window.innerWidth > 768, []);
-  const [isDesktop, setIsDesktop] = useState(checkIfDesktop());
+export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const isDesktop = useIsDesktop();
+  const isAuthorized = useCheckAuth();
+
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
   };
-
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(checkIfDesktop());
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [checkIfDesktop]);
 
   return (
     <SectionWithWrapper
@@ -34,7 +28,7 @@ export default function Header({ isLoggedIn }) {
       className="header__wrapper section_mobile-margins_m"
     >
       <Logo className="header__logo" />
-      {isLoggedIn ? (
+      {isAuthorized ? (
         <>
           {isDesktop ? (
             <DesktopNav>

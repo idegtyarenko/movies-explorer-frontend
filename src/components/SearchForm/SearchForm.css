@@ -45,6 +45,10 @@
   background-repeat: no-repeat;
 }
 
+.search-form__switch {
+  align-self: flex-start;
+}
+
 @media screen and (max-width: 768px) {
   .search-form {
     padding-top: 66px;
@@ -53,11 +57,11 @@
 
   .search-form__form {
     gap: 29px;
-    align-items: flex-end;
   }
 
   .search-form__switch {
     flex-direction: row-reverse;
+    align-self: flex-end;
   }
 }
 
@@ -68,12 +72,15 @@
   }
 
   .search-form__form {
-    align-items: center;
     gap: 40px;
   }
 
   .search-form__input {
     font-size: 18px;
     line-height: 22px;
+  }
+
+  .search-form__switch {
+    align-self: center;
   }
 }

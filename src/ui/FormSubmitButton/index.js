@@ -8,17 +8,19 @@ export default function FormSubmitButton({
   disabled,
   children,
 }) {
-  const defaultClass = "form-submit-button link-hover-behavior";
+  const defaultClass = "form-submit-button";
 
   return (
     <button
       className={joinClassNames([
         defaultClass,
+        !disabled && "link-hover-behavior",
         disabled && "form-submit-button_state_disabled",
         className,
       ])}
       type="submit"
       form={formId}
+      disabled={disabled}
     >
       {children}
     </button>

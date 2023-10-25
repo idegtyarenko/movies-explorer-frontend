@@ -1,13 +1,70 @@
-import MovieCardsGrid from "components/MovieCardsGrid";
+import Preloader from "ui/Preloader/Preloader";
 import SearchForm from "components/SearchForm";
 import PaginationControl from "components/PaginationControl";
+import { useDisplayNotification } from "modules/ContentWithNotifications";
 
-export default function MoviesExplorer({ savedMovies = false }) {
+import useSearchFormState from "./hooks/useSearchFormState";
+import { saveQuery, saveResult } from "./utils/localStorage";
+import useMovies from "./hooks/useMovies";
+import { filterMovies, getStatus, Status } from "./utils/utils";
+import MovieCardsGrid from "./components/MovieCardsGrid";
+import Error from "./components/Error";
+import usePaginationState from "./hooks/usePaginationState";
+
+export { MoviesDataProvider } from "./store";
+
+export default function MoviesExplorer({ isSavedMovies = false }) {
+  const { query, setQuery, submitCount, setSubmitCount } =
+    useSearchFormState(isSavedMovies);
+
+  const { moviesData, error, isLoading } = useMovies(
+    submitCount,
+    isSavedMovies,
+  );
+  const result = filterMovies(moviesData, query, isSavedMovies);
+  if (!isSavedMovies) {
+    saveQuery(query);
+    saveResult(result);
+  }
+
+  const displayNotification = useDisplayNotification();
+  const handleSubmit = (formValues) => {
+    if (isSavedMovies || formValues["query-text"]) {
+      setQuery(formValues);
+      setSubmitCount((oldValue) => oldValue + 1);
+    } else {
+      displayNotification({
+        type: "error",
+        title: "Нужно ввести ключевое слово",
+        text: "Чтобы что-то найти, надо что-то искать.",
+      });
+    }
+  };
+
+  const searchStatus = getStatus({
+    isLoading,
+    error,
+    query,
+    result,
+    isSavedMovies,
+  });
+
+  const { shownCardsNumber, loadNewCards } = usePaginationState(
+    isSavedMovies,
+    query,
+  );
+  const shownCards = result.slice(0, shownCardsNumber);
+  const isMoreCardsAvailable = result.length > shownCardsNumber;
+
   return (
     <>
-      <SearchForm />
-      <MovieCardsGrid savedMovies={savedMovies} />
-      <PaginationControl />
+      <SearchForm onSubmit={handleSubmit} initialQuery={query} />
+      {searchStatus === Status.LOADING && <Preloader />}
+      {searchStatus === Status.FOUND && (
+        <MovieCardsGrid movies={shownCards} isSavedMovies={isSavedMovies} />
+      )}
+      {searchStatus === Status.ERROR && <Error error={error} />}
+      {isMoreCardsAvailable && <PaginationControl onClick={loadNewCards} />}
     </>
   );
 }

@@ -1,3 +1,5 @@
+import { CONNECTION_ERROR_MESSAGE } from "./strings";
+
 export function isNonEmptyString(value) {
   return typeof value === "string" && value.trim() !== "";
 }
@@ -13,4 +15,54 @@ export function joinClassNames(array) {
     }
     return accumulator;
   });
+}
+
+const handleResponse = (res) =>
+  res.json().then((body) => {
+    const { ok } = res;
+    if (ok) {
+      return body;
+    }
+    return Promise.reject({
+      status: res.status,
+      message: body.message,
+    });
+  });
+
+const handleNetworkError = (err) =>
+  Promise.reject({
+    status: 0,
+    message: CONNECTION_ERROR_MESSAGE,
+  });
+
+export async function fetchResource({
+  endpoint,
+  method,
+  headers,
+  bodyObject,
+  credentials = true,
+}) {
+  const settings = {
+    method,
+    headers,
+    credentials: credentials ? "include" : "omit",
+    body: JSON.stringify(bodyObject),
+  };
+
+  try {
+    const res = await fetch(endpoint, settings);
+    return handleResponse(res);
+  } catch (err) {
+    return handleNetworkError(err);
+  }
+}
+
+export function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+export function loadData(key) {
+  return localStorage.getItem(key)
+    ? JSON.parse(localStorage.getItem(key))
+    : null;
 }

@@ -1,13 +1,12 @@
+import ContentWithNotifications from "modules/ContentWithNotifications";
 import Main from "ui/Main";
-import Notifications from "modules/Notifications";
 
 export default function BasicLayout({ children }) {
   return (
-    <>
+    <ContentWithNotifications>
       <Main>
         <section>{children}</section>
       </Main>
-      <Notifications text="" />
-    </>
+    </ContentWithNotifications>
   );
 }

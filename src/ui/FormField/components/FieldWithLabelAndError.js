@@ -6,6 +6,8 @@ export default function FormField({
   errorText,
   type,
   className,
+  value,
+  onChange,
   ...props
 }) {
   if (label && !id) {
@@ -26,6 +28,8 @@ export default function FormField({
         className={`${className}-input`}
         type={type || "text"}
         id={id}
+        value={value}
+        onChange={onChange}
         {...props}
       />
       {isErrorDisplayed && <p className={`${className}-error`}>{errorText}</p>}
