@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { CurrentUserProvider } from "store/user";
 import { MoviesDataProvider } from "modules/MoviesExplorer";
+import TrackingContainer from "components/TrackingContainer";
 import Main from "pages/Main";
 import ProtectedRouteElement from "components/ProtectedRouteElement";
 import Movies from "pages/Movies";
@@ -19,26 +20,28 @@ root.render(
   <React.StrictMode>
     <CurrentUserProvider>
       <MoviesDataProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route
-              path="/movies"
-              element={<ProtectedRouteElement element={Movies} />}
-            />
-            <Route
-              path="/saved-movies"
-              element={<ProtectedRouteElement element={SavedMovies} />}
-            />
-            <Route
-              path="/profile"
-              element={<ProtectedRouteElement element={Profile} />}
-            />
-            <Route path="/signin" element={<Login />} />
-            <Route path="/signup" element={<Register />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <TrackingContainer>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route
+                path="/movies"
+                element={<ProtectedRouteElement element={Movies} />}
+              />
+              <Route
+                path="/saved-movies"
+                element={<ProtectedRouteElement element={SavedMovies} />}
+              />
+              <Route
+                path="/profile"
+                element={<ProtectedRouteElement element={Profile} />}
+              />
+              <Route path="/signin" element={<Login />} />
+              <Route path="/signup" element={<Register />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TrackingContainer>
       </MoviesDataProvider>
     </CurrentUserProvider>
   </React.StrictMode>,
