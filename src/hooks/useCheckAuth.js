@@ -22,9 +22,15 @@ export default function useCheckAuth() {
       }
     }
 
+    function pushUserIdToMatomoDataLayer(id) {
+      window._mtm = window._mtm || [];
+      window._mtm.push({ userId: id });
+    }
+
     async function executeCheck() {
       try {
-        await getUser();
+        const user = await getUser();
+        pushUserIdToMatomoDataLayer(user._id);
         setIsAuthorized(true);
       } catch (err) {
         setIsAuthorized(false);
