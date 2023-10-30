@@ -3,6 +3,7 @@ import Link from "ui/Link";
 import "./Card.css";
 
 export default function Card({
+  id,
   image,
   name,
   altText,
@@ -11,7 +12,7 @@ export default function Card({
   button,
 }) {
   return (
-    <li className="card">
+    <li className="card" id={id}>
       <Link to={trailerLink} className="card__link">
         <img className="card__image" src={image} alt={altText} />
         <div className="card__text">
